@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   try {
     const { password } = req.body;
     
-    if (password === "tuiducios@") {
+    if (password === process.env.ADMIN_PASSWORD) {
       // Tạo session token an toàn
       const token = Buffer.from(`${Date.now()}-${Math.random()}-${process.env.ADMIN_SECRET || 'fallback'}`).toString('base64');
       
