@@ -1,5 +1,20 @@
 [
   {
+    "id": "ipa-1762100951459",
+    "type": "ipa",
+    "name": "Roblox KRNL VNG",
+    "icon": "https://discord.do/wp-content/uploads/2025/06/Krnl-Discord-server.png",
+    "desc": "Update 696, Fix Lag, Boost FPS, Fix AntiBan",
+    "tags": [
+      "game"
+    ],
+    "badge": null,
+    "fileLink": "https://link4sub.com/4i1R",
+    "version": "695",
+    "developer": "HuyMythic",
+    "date": "2025-11-02"
+  },
+  {
     "id": "ipa-1762100042458",
     "type": "ipa",
     "name": "Menu FF Free",
