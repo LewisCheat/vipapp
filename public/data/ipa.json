@@ -1,5 +1,20 @@
 [
   {
+    "id": "ipa-1762057605075",
+    "type": "ipa",
+    "name": "Garena",
+    "icon": "https://m.media-amazon.com/images/I/31zxhRTjBwL.jpg",
+    "desc": "App Garena, đã bị xóa khỏi appstore",
+    "tags": [
+      "utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://link4sub.com/3EiE",
+    "version": "",
+    "developer": "tuiducios",
+    "date": "2025-11-02"
+  },
+  {
     "id": "ipa-1761935373370",
     "type": "ipa",
     "name": "Shadowrocket",
