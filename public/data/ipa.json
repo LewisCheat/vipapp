@@ -1,5 +1,41 @@
 [
   {
+    "id": "ipa-com.dehancer.film.ios-app",
+    "type": "ipa",
+    "name": "Dehancer",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.dehancer.film.ios-app.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/22-11-2025/Dehancer_5.2_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "5.2",
+    "developer": "apptesters.org",
+    "date": "2025-11-22",
+    "source": "apptesters",
+    "bundleID": "com.dehancer.film.ios-app",
+    "lastSync": "2025-11-22T09:07:59.518Z"
+  },
+  {
+    "id": "ipa-com.bpmhealth.boostfitness",
+    "type": "ipa",
+    "name": "Boostcamp",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.bpmhealth.boostfitness.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/22-11-2025/Boostcamp_248_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "248",
+    "developer": "apptesters.org",
+    "date": "2025-11-22",
+    "source": "apptesters",
+    "bundleID": "com.bpmhealth.boostfitness",
+    "lastSync": "2025-11-22T09:07:59.519Z"
+  },
+  {
     "id": "ipa-dazz.camera.vintagecamera",
     "type": "ipa",
     "name": "Dazz",
