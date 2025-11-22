@@ -1,19 +1,21 @@
 [
   {
-    "id": "ipa-1763820101783",
+    "id": "ipa-com.sfun.snapedit",
     "type": "ipa",
-    "name": "Menu LQMB V1",
-    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDqIad-OpSF_2UU4SdH4NGWlY56YtuTDFQbRJPHzLO-Q&s",
-    "desc": "Menu LQ Crack V1 - AntiBan",
+    "name": "SnapEdit",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.sfun.snapedit.png",
+    "desc": "Injected with Pro",
     "tags": [
-      "game"
+      "photo"
     ],
-    "badge": null,
-    "source": "manual",
-    "fileLink": "https://zufile.com/download/8cGi9JjFoS",
-    "version": "1.0",
-    "developer": "Bannei",
-    "date": "2025-11-22"
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/22-11-2025/SnapEdit_6.2.6_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.2.6",
+    "developer": "apptesters.org",
+    "date": "2025-11-22",
+    "source": "apptesters",
+    "bundleID": "com.sfun.snapedit",
+    "lastSync": "2025-11-22T17:12:27.904Z"
   },
   {
     "id": "ipa-se.resenatverket.FlightRadar24-Free",
@@ -1600,25 +1602,6 @@
     "lastSync": "2025-11-19T03:54:51.352Z"
   },
   {
-    "id": "ipa-com.sfun.snapedit",
-    "type": "ipa",
-    "name": "SnapEdit",
-    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.sfun.snapedit.png",
-    "desc": "Injected with Pro",
-    "tags": [
-      "photo",
-      "productivity"
-    ],
-    "badge": "new",
-    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/19-11-2025/SnapEdit_6.2.5_Pro_%40thisismanpreets_apptesters.org.ipa",
-    "version": "6.2.5",
-    "developer": "apptesters.org",
-    "date": "2025-11-19",
-    "source": "apptesters",
-    "bundleID": "com.sfun.snapedit",
-    "lastSync": "2025-11-19T07:55:18.157Z"
-  },
-  {
     "id": "ipa-com.templyvideo.Temply",
     "type": "ipa",
     "name": "Temply",
@@ -1833,6 +1816,22 @@
     "source": "apptesters",
     "bundleID": "com.mwm.guitartuner",
     "lastSync": "2025-11-19T15:45:31.928Z"
+  },
+  {
+    "id": "ipa-1763820101783",
+    "type": "ipa",
+    "name": "Menu LQMB V1",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDqIad-OpSF_2UU4SdH4NGWlY56YtuTDFQbRJPHzLO-Q&s",
+    "desc": "Menu LQ Crack V1 - AntiBan",
+    "tags": [
+      "game"
+    ],
+    "badge": null,
+    "source": "manual",
+    "fileLink": "https://zufile.com/download/8cGi9JjFoS",
+    "version": "1.0",
+    "developer": "Bannei",
+    "date": "2025-11-22"
   },
   {
     "id": "ipa-1762125523206",
