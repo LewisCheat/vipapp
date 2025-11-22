@@ -1,5 +1,21 @@
 [
   {
+    "id": "ipa-1763820101783",
+    "type": "ipa",
+    "name": "Menu LQMB V1",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDqIad-OpSF_2UU4SdH4NGWlY56YtuTDFQbRJPHzLO-Q&s",
+    "desc": "Menu LQ Crack V1 - AntiBan",
+    "tags": [
+      "game"
+    ],
+    "badge": null,
+    "source": "manual",
+    "fileLink": "https://zufile.com/download/8cGi9JjFoS",
+    "version": "1.0",
+    "developer": "Bannei",
+    "date": "2025-11-22"
+  },
+  {
     "id": "ipa-se.resenatverket.FlightRadar24-Free",
     "type": "ipa",
     "name": "Flightradar24",
