@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ⭐ THÊM FONT INTER -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <title>Admin Upload</title>
   <link rel="stylesheet" href="../css/style.css" />
   <style>
@@ -36,6 +38,97 @@
         background: var(--card-bg-dark);
         box-shadow: 0 8px 25px var(--card-shadow-dark);
     }
+    
+    /* 🆕 AUTO-SYNC SECTION */
+    .sync-section {
+      background: rgba(26, 188, 156, 0.05);
+      border: 2px solid var(--primary);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    body.dark .sync-section {
+      background: rgba(26, 188, 156, 0.1);
+      border-color: var(--primary);
+    }
+    
+    .sync-section h2 {
+      color: var(--primary);
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .sync-btn {
+      background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+      color: white;
+      padding: 14px 30px;
+      font-size: 1.1em;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(26, 188, 156, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .sync-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26, 188, 156, 0.5);
+    }
+    
+    .sync-btn:active {
+      transform: translateY(0);
+    }
+    
+    .sync-btn:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      opacity: 0.6;
+      transform: none;
+    }
+    
+    .sync-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .stat-box {
+      background: var(--card-bg-light);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    body.dark .stat-box {
+      background: var(--card-bg-dark);
+    }
+    
+    .stat-box h3 {
+      font-size: 2em;
+      color: var(--primary);
+      margin: 0;
+    }
+    
+    .stat-box p {
+      font-size: 0.9em;
+      color: var(--text-light);
+      margin: 5px 0 0 0;
+    }
+    body.dark .stat-box p {
+      color: var(--text-dark);
+    }
+    
+    /* Rest of existing styles... */
     label {
       font-weight: 600;
       display: block;
@@ -201,6 +294,20 @@
       padding-bottom: 8px;
       border-bottom: 2px solid var(--primary);
     }
+    
+    .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 0.8s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -214,7 +321,56 @@
   </div>
 
   <div class="form-box" id="uploadForm">
-    <h1>🛠️ Admin Upload</h1>
+    <h1>🛠️ Admin Dashboard</h1>
+
+    <!-- 🆕 AUTO-SYNC SECTION -->
+    <div class="sync-section">
+      <h2>
+        🔄 Auto-Sync IPA từ AppTesters
+      </h2>
+      <p style="color: var(--text-light); margin: 10px 0;">
+        <strong>Sync hàng ngày tự động lúc 9:00 AM</strong><br>
+        Hoặc bấm nút bên dưới để sync ngay (chỉ lấy IPA hôm nay)
+      </p>
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <button class="sync-btn" id="syncBtn" onclick="syncIPA(false)">
+          <span id="syncBtnIcon">🔄</span>
+          <span id="syncBtnText">Sync Hôm Nay</span>
+        </button>
+        <button class="sync-btn" id="forceSyncBtn" onclick="syncIPA(true)" 
+                style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+          <span id="forceSyncBtnIcon">⚠️</span>
+          <span id="forceSyncBtnText">Force Full Sync</span>
+        </button>
+      </div>
+      <p style="color: #e74c3c; font-size: 0.85em; margin-top: 10px;">
+        ⚠️ Force Full Sync sẽ xử lý toàn bộ dữ liệu, chỉ dùng khi cần thiết
+      </p>
+      
+      <div class="sync-stats" id="syncStats" style="display: none;">
+        <div class="stat-box">
+          <h3 id="statManual">-</h3>
+          <p>Thủ công</p>
+        </div>
+        <div class="stat-box">
+          <h3 id="statAuto">-</h3>
+          <p>Tự động</p>
+        </div>
+        <div class="stat-box">
+          <h3 id="statTotal">-</h3>
+          <p>Tổng cộng</p>
+        </div>
+        <div class="stat-box">
+          <h3 id="statSynced">-</h3>
+          <p>Mới sync</p>
+        </div>
+      </div>
+      
+      <div class="status-message" id="syncStatus"></div>
+    </div>
+
+    <!-- UPLOAD MANUAL SECTION (GIỮ NGUYÊN) -->
+    <div class="form-section-title">📤 Upload Thủ Công</div>
 
     <div class="form-group">
       <label for="select-type">📁 Chọn loại upload:</label>
@@ -320,7 +476,7 @@
 
     <div class="form-group">
       <label for="input-developer" id="label-developer">Nhà phát triển:</label>
-      <input type="text" id="input-developer" placeholder="VD: tuiducios..." />
+      <input type="text" id="input-developer" placeholder="VD: Cuios..." />
     </div>
 
     <button onclick="uploadApp()">📤 Upload</button>
@@ -335,7 +491,7 @@
     const loginStatus = document.getElementById('loginStatus');
     const uploadStatus = document.getElementById('uploadStatus');
 
-    // Kiểm tra auth khi trang load
+    // ==================== AUTH LOGIC (GIỮ NGUYÊN) ====================
     async function checkExistingAuth() {
       try {
         const response = await fetch('/api/auth/verify', {
@@ -351,12 +507,10 @@
           showUploadForm();
         }
       } catch (error) {
-        // Không làm gì cả, user cần login lại
         console.log('No existing auth session');
       }
     }
 
-    // Gọi khi trang load
     checkExistingAuth();
 
     async function checkPassword() {
@@ -382,7 +536,6 @@
           authToken = result.token;
           showLoginStatus('success', '✅ Đăng nhập thành công!');
           
-          // Ẩn thông báo sau 2 giây rồi mới hiện form upload
           setTimeout(() => {
             loginStatus.style.display = 'none';
             showUploadForm();
@@ -413,27 +566,7 @@
       uploadForm.style.display = 'block';
     }
 
-    async function verifyAuth() {
-      if (!authToken) return false;
-      
-      try {
-        const response = await fetch('/api/auth/verify', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ token: authToken })
-        });
-        
-        const result = await response.json();
-        return result.success;
-      } catch (error) {
-        return false;
-      }
-    }
-
     function logout() {
-      // Xóa token và cookie
       authToken = null;
       document.cookie = "admin_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       loginBox.style.display = 'block';
@@ -445,6 +578,69 @@
       }, 3000);
     }
 
+    // ==================== 🆕 AUTO-SYNC LOGIC ====================
+    async function syncIPA() {
+      const syncBtn = document.getElementById('syncBtn');
+      const syncBtnIcon = document.getElementById('syncBtnIcon');
+      const syncBtnText = document.getElementById('syncBtnText');
+      const syncStatusEl = document.getElementById('syncStatus');
+      const syncStats = document.getElementById('syncStats');
+      
+      // Disable button
+      syncBtn.disabled = true;
+      syncBtnIcon.innerHTML = '<span class="spinner"></span>';
+      syncBtnText.textContent = 'Đang sync...';
+      
+      try {
+        const response = await fetch('/api/sync-ipa', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+
+        const result = await response.json();
+        
+        if (response.ok) {
+          showSyncStatus('success', `✅ Sync thành công! Đã thêm ${result.stats.synced} app mới`);
+          
+          // Hiển thị stats
+          syncStats.style.display = 'grid';
+          document.getElementById('statManual').textContent = result.stats.manual;
+          document.getElementById('statAuto').textContent = result.stats.auto;
+          document.getElementById('statTotal').textContent = result.stats.total;
+          document.getElementById('statSynced').textContent = '+' + result.stats.synced;
+          
+        } else {
+          if (result.code === 'NO_AUTH_COOKIE') {
+            showSyncStatus('error', '❌ Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.');
+            logout();
+          } else {
+            showSyncStatus('error', `❌ Lỗi: ${result.error || 'Không thể sync'}`);
+          }
+        }
+      } catch (error) {
+        showSyncStatus('error', `❌ Lỗi kết nối: ${error.message}`);
+      } finally {
+        // Re-enable button
+        syncBtn.disabled = false;
+        syncBtnIcon.textContent = '🔄';
+        syncBtnText.textContent = 'Sync Ngay';
+      }
+    }
+
+    function showSyncStatus(type, message) {
+      const syncStatusEl = document.getElementById('syncStatus');
+      syncStatusEl.className = `status-message ${type}`;
+      syncStatusEl.textContent = message;
+      syncStatusEl.style.display = 'block';
+      
+      setTimeout(() => {
+        syncStatusEl.style.display = 'none';
+      }, 7000);
+    }
+
+    // ==================== UPLOAD LOGIC (GIỮ NGUYÊN) ====================
     const selectType = document.getElementById('select-type');
     const usageGroup = document.getElementById('usage-group');
     const inputVersion = document.getElementById('input-version');
@@ -489,7 +685,6 @@
       const icon = document.getElementById('input-icon').value.trim();
       const desc = document.getElementById('input-desc').value.trim();
 
-      // Validate required fields
       if (!name || !icon || !desc) {
         showUploadStatus('error', '⚠️ Vui lòng điền đầy đủ thông tin!');
         return;
@@ -509,7 +704,8 @@
           icon: icon,
           desc: desc,
           tags: tags,
-          badge: badge !== 'none' ? badge : null
+          badge: badge !== 'none' ? badge : null,
+          source: 'manual' // 🏷️ Đánh dấu nguồn manual
       };
 
       if (type === 'conf') {
@@ -553,9 +749,7 @@
           showUploadStatus('success', `✅ Upload thành công! Đang chuyển về trang chủ...`);
           clearForm();
           
-          // Tự động chuyển về trang chủ sau 2 giây
           setTimeout(() => {
-            // Quay về trang chủ trong iframe
             if (window.top && window.top.document) {
               const homeLink = window.top.document.querySelector('.bottom-nav a[href*="home.html"]');
               if (homeLink) {
@@ -565,18 +759,15 @@
           }, 2000);
           
         } else {
-          // 🛡️ QUAN TRỌNG: Xử lý lỗi thông minh - KHÔNG tự logout
           if (result.code === 'NO_AUTH_COOKIE') {
             showUploadStatus('error', '❌ Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.');
-            logout(); // Chỉ logout khi hết hạn auth thực sự
+            logout();
           } else {
             showUploadStatus('error', `❌ Lỗi: ${result.error || 'Không thể upload'}`);
-            // Giữ nguyên trạng thái đăng nhập với các lỗi khác
           }
         }
       } catch (error) {
         showUploadStatus('error', `❌ Lỗi kết nối: ${error.message}`);
-        // KHÔNG logout khi lỗi kết nối
       }
     }
 

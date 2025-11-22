@@ -15,7 +15,7 @@ export default async function handler(req, res) {
       
       return res.json({ 
         success: true, 
-        message: 'Đăng Nhập Thành Công',
+        message: 'Login successful',
         token: token
       });
     }
