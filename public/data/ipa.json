@@ -1,5 +1,21 @@
 [
   {
+    "id": "ipa-1763995566454",
+    "type": "ipa",
+    "name": "Minecraft 1.21.123",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpLIw5JlaKK3auj4mhdozH9lcuVLq1ARWmCzgjZXOKcL4u3MBt-k-XH65t&s=10",
+    "desc": "Ipa Minecraft Từ AppStore Không Cần Trả Phí",
+    "tags": [
+      "game"
+    ],
+    "badge": "trending",
+    "source": "manual",
+    "fileLink": "https://archive.org/download/minecraft-1.21.123-13.0-le-ti/Minecraft_1.21.123_13.0_LeTi.ipa",
+    "version": "1.21.123",
+    "developer": "tuiducios",
+    "date": "2025-11-24"
+  },
+  {
     "id": "ipa-com.getmimo.mimo",
     "type": "ipa",
     "name": "Mimo",
