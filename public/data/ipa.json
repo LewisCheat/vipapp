@@ -1,5 +1,21 @@
 [
   {
+    "id": "ipa-1764002214260",
+    "type": "ipa",
+    "name": "Garena",
+    "icon": "https://play-lh.googleusercontent.com/oDC8LSrQbPhq9VEf84fnoDx1UPtIRf7wUnaKQPRk3Z_kXXgivcHx_uZ3rF1bubrTg5c",
+    "desc": "App Garena, Đã bị xoá khỏi appstore",
+    "tags": [
+      "utility"
+    ],
+    "badge": "trending",
+    "source": "manual",
+    "fileLink": "https://zufile.com/download/6VLMnZ383A",
+    "version": "2.9.12",
+    "developer": "tuiducios",
+    "date": "2025-11-24"
+  },
+  {
     "id": "ipa-1764001941910",
     "type": "ipa",
     "name": "Builda",
