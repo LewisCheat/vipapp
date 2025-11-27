@@ -1,5 +1,203 @@
 [
   {
+    "id": "ipa-com.path36.SpliceFree",
+    "type": "ipa",
+    "name": "Splice",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.path36.SpliceFree.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "photo"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/Splice_4.28.55_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "4.28.55",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.path36.SpliceFree",
+    "lastSync": "2025-11-27T12:33:36.470Z"
+  },
+  {
+    "id": "ipa-com.djitlabs.pixelcolor",
+    "type": "ipa",
+    "name": "PixelColor",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.djitlabs.pixelcolor.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/PixelColor_5.45.00_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "5.45.00",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.djitlabs.pixelcolor",
+    "lastSync": "2025-11-27T12:33:36.471Z"
+  },
+  {
+    "id": "ipa-com.outerspaceapps.itranslate",
+    "type": "ipa",
+    "name": "iTranslate",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.outerspaceapps.itranslate.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/iTranslate_17.4.59_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "17.4.59",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.outerspaceapps.itranslate",
+    "lastSync": "2025-11-27T12:33:36.471Z"
+  },
+  {
+    "id": "ipa-com.fujixweekly.fujixweeklyrecipes",
+    "type": "ipa",
+    "name": "FujiXWeekly",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.fujixweekly.fujixweeklyrecipes.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/FujiXWeekly_1.11.0_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "1.11.0",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.fujixweekly.fujixweeklyrecipes",
+    "lastSync": "2025-11-27T12:33:36.471Z"
+  },
+  {
+    "id": "ipa-com.blake.femalefitness",
+    "type": "ipa",
+    "name": "Shapy",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.blake.femalefitness.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/Shapy_10.4.6_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "10.4.6",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.blake.femalefitness",
+    "lastSync": "2025-11-27T12:33:36.471Z"
+  },
+  {
+    "id": "ipa-com.zerone.hidesktop",
+    "type": "ipa",
+    "name": "HiWidget",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.zerone.hidesktop.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/HiWidget_4.3.60_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "4.3.60",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.zerone.hidesktop",
+    "lastSync": "2025-11-27T12:33:36.471Z"
+  },
+  {
+    "id": "ipa-com.abishkking.maleworkout",
+    "type": "ipa",
+    "name": "Homeworkouts",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.abishkking.maleworkout.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/Homeworkouts_1.42.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "1.42.0",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.abishkking.maleworkout",
+    "lastSync": "2025-11-27T12:33:36.471Z"
+  },
+  {
+    "id": "ipa-com.myfitnesspal.mfp",
+    "type": "ipa",
+    "name": "MyFitnessPal",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.myfitnesspal.mfp.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/MyFitnessPal_25.46.1_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "25.46.1",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.myfitnesspal.mfp",
+    "lastSync": "2025-11-27T12:33:36.471Z"
+  },
+  {
+    "id": "ipa-com.ahaf.mshion",
+    "type": "ipa",
+    "name": "ism",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.ahaf.mshion.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/ism_7.29.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "7.29.0",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.ahaf.mshion",
+    "lastSync": "2025-11-27T12:33:36.471Z"
+  },
+  {
+    "id": "ipa-com.picsart.studio",
+    "type": "ipa",
+    "name": "PicsArt",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.picsart.studio.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "photo"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/PicsArt_28.9.3_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "28.9.3",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.picsart.studio",
+    "lastSync": "2025-11-27T12:33:36.472Z"
+  },
+  {
+    "id": "ipa-com.bbauman.Scripty",
+    "type": "ipa",
+    "name": "Coconote",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.bbauman.Scripty.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/27-11-2025/Coconote_2.28_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.28",
+    "developer": "apptesters.org",
+    "date": "2025-11-27",
+    "source": "apptesters",
+    "bundleID": "com.bbauman.Scripty",
+    "lastSync": "2025-11-27T12:33:36.472Z"
+  },
+  {
     "id": "ipa-com.AppChief.ArabicArt",
     "type": "ipa",
     "name": "",
@@ -504,24 +702,6 @@
     "lastSync": "2025-11-24T09:03:58.373Z"
   },
   {
-    "id": "ipa-com.picsart.studio",
-    "type": "ipa",
-    "name": "PicsArt",
-    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.picsart.studio.png",
-    "desc": "Injected with Subscription Unlocked",
-    "tags": [
-      "photo"
-    ],
-    "badge": "new",
-    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/24-11-2025/PicsArt_28.8.4_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
-    "version": "28.8.4",
-    "developer": "apptesters.org",
-    "date": "2025-11-24",
-    "source": "apptesters",
-    "bundleID": "com.picsart.studio",
-    "lastSync": "2025-11-24T09:03:58.373Z"
-  },
-  {
     "id": "ipa-com.mwm.nota",
     "type": "ipa",
     "name": "Peanote",
@@ -555,24 +735,6 @@
     "date": "2025-11-23",
     "source": "apptesters",
     "bundleID": "app.tripsy.ios",
-    "lastSync": "2025-11-23T05:29:57.159Z"
-  },
-  {
-    "id": "ipa-com.ahaf.mshion",
-    "type": "ipa",
-    "name": "ism",
-    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.ahaf.mshion.png",
-    "desc": "Injected with Subscription Unlocked",
-    "tags": [
-      "photo"
-    ],
-    "badge": "new",
-    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/23-11-2025/ism_7.28.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
-    "version": "7.28.0",
-    "developer": "apptesters.org",
-    "date": "2025-11-23",
-    "source": "apptesters",
-    "bundleID": "com.ahaf.mshion",
     "lastSync": "2025-11-23T05:29:57.159Z"
   },
   {
@@ -1078,24 +1240,6 @@
     "source": "apptesters",
     "bundleID": "com.internet-rocks.codescanner",
     "lastSync": "2025-11-21T12:39:00.564Z"
-  },
-  {
-    "id": "ipa-com.bbauman.Scripty",
-    "type": "ipa",
-    "name": "Coconote",
-    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.bbauman.Scripty.png",
-    "desc": "Injected with Pro",
-    "tags": [
-      "productivity"
-    ],
-    "badge": "new",
-    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/21-11-2025/Coconote_2.26_Pro_%40thisismanpreets_apptesters.org.ipa",
-    "version": "2.26",
-    "developer": "apptesters.org",
-    "date": "2025-11-21",
-    "source": "apptesters",
-    "bundleID": "com.bbauman.Scripty",
-    "lastSync": "2025-11-21T02:20:41.562Z"
   },
   {
     "id": "ipa-viral.vision.vids",
@@ -2031,24 +2175,6 @@
     "date": "2025-11-19",
     "source": "apptesters",
     "bundleID": "com.campmobile.snow",
-    "lastSync": "2025-11-19T03:54:51.352Z"
-  },
-  {
-    "id": "ipa-com.myfitnesspal.mfp",
-    "type": "ipa",
-    "name": "MyFitnessPal",
-    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.myfitnesspal.mfp.png",
-    "desc": "Injected with Subscription Unlocked",
-    "tags": [
-      "utility"
-    ],
-    "badge": "new",
-    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/19-11-2025/MyFitnessPal_25.46.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
-    "version": "25.46.0",
-    "developer": "apptesters.org",
-    "date": "2025-11-19",
-    "source": "apptesters",
-    "bundleID": "com.myfitnesspal.mfp",
     "lastSync": "2025-11-19T03:54:51.352Z"
   },
   {
