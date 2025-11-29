@@ -1,5 +1,37 @@
 [
   {
+    "id": "ipa-1764246931772",
+    "type": "ipa",
+    "name": "Builda V2",
+    "icon": "https://modbibi.com/wp-content/uploads/2025/11/Cau-Ca-Van-Can-apk-icon.jpg",
+    "desc": "Đã fix Luckyspeed. Tải V2 tránh lỗi",
+    "tags": [
+      "game"
+    ],
+    "badge": "top",
+    "source": "manual",
+    "fileLink": "https://zufile.com/download/clssc8x2fr",
+    "version": "2.0",
+    "developer": "tuiducios",
+    "date": "2025-11-27"
+  },
+    {
+    "id": "ipa-1763820101783",
+    "type": "ipa",
+    "name": "Menu LQMB V1",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDqIad-OpSF_2UU4SdH4NGWlY56YtuTDFQbRJPHzLO-Q&s",
+    "desc": "Menu LQ Nokey V1 - AntiBan",
+    "tags": [
+      "game"
+    ],
+    "badge": null,
+    "source": "manual",
+    "fileLink": "https://zufile.com/download/8cGi9JjFoS",
+    "version": "1.0",
+    "developer": "Bannei",
+    "date": "2025-11-22"
+  },
+  {
     "id": "ipa-com.skylum.luminaripad-3.0.5",
     "type": "ipa",
     "name": "Luminar",

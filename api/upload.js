@@ -31,9 +31,8 @@ export default async function handler(req, res) {
 
     // GitHub configuration từ environment variables
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-    const GITHUB_OWNER = process.env.GITHUB_OWNER || 'Cuongqtx11';
-    const GITHUB_REPO = process.env.GITHUB_REPO || 'app_vip';
-    
+    const GITHUB_OWNER = process.env.GITHUB_OWNER || 'abcxyznd';
+    const GITHUB_REPO = process.env.GITHUB_REPO || 'vipapp';
     // File path được xác định dựa trên type
     // Lưu ý: Dù file cert.json, mod.json, sign.json được liệt kê trong thư mục public/pages/data/,
     // việc truy cập qua GitHub API vẫn cần đường dẫn chính xác trên repository.
