@@ -1,40 +1,53 @@
-// api/sync-ipa.js - GIỮ TẤT CẢ PHIÊN BẢN KHÁC NHAU
+// api/sync-ipa.js - FIXED với CORS và Auth bypass cho bot
 
 export default async function handler(req, res) {
-  // CRITICAL: CORS headers
+  // CRITICAL: CORS headers phải đặt đầu tiên
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Cookie');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
 
+  // Handle OPTIONS preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
+  // ONLY allow POST
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    console.log('❌ Method not allowed:', req.method);
+    return res.status(405).json({ 
+      error: 'Method not allowed',
+      allowedMethods: ['POST']
+    });
   }
 
   console.log('🔄 Sync API called:', new Date().toISOString());
+  console.log('📝 Headers:', req.headers.cookie ? 'Has cookie' : 'No cookie');
 
   try {
     const { syncHours, botSync } = req.body || {};
 
-    // 🔐 AUTH CHECK
+    // 🔐 AUTH CHECK - Multiple bypass methods
     const cookie = req.headers.cookie || '';
+    
     const hasAuthCookie = 
       cookie.includes('admin_token') || 
       cookie.includes('auth') ||
-      botSync === true;
+      cookie.includes('sync_authorized') ||
+      cookie.includes('bot_sync_bypass') ||  // Bot bypass
+      botSync === true;  // Bot flag bypass
     
     if (!hasAuthCookie) {
+      console.log('⚠️ Auth failed - Cookie:', cookie);
+      console.log('⚠️ Auth failed - botSync:', botSync);
       return res.status(401).json({ 
         error: 'Unauthorized',
-        code: 'NO_AUTH_COOKIE'
+        code: 'NO_AUTH_COOKIE',
+        hint: 'Add admin_token cookie or set botSync=true'
       });
     }
 
-    console.log('✅ Auth passed');
+    console.log('✅ Auth passed (botSync:', botSync, ')');
 
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const GITHUB_OWNER = process.env.GITHUB_OWNER || 'Cuongqtx11';
@@ -43,31 +56,51 @@ export default async function handler(req, res) {
     const APPTESTER_URL = 'https://repository.apptesters.org/';
 
     if (!GITHUB_TOKEN) {
+      console.error('❌ GITHUB_TOKEN not found');
       return res.status(500).json({ error: 'GitHub token not configured' });
     }
 
     // 1. Fetch từ AppTesters
     console.log('📦 Fetching from AppTesters...');
-    const response = await fetch(APPTESTER_URL, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0',
-        'Accept': 'application/json'
+    let allAppTestersData;
+    
+    try {
+      const response = await fetch(APPTESTER_URL, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0',
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`API returned ${response.status}`);
       }
-    });
-    
-    if (!response.ok) {
-      throw new Error(`API returned ${response.status}`);
+      
+      const jsonData = await response.json();
+      
+      if (jsonData.apps && Array.isArray(jsonData.apps)) {
+        allAppTestersData = jsonData.apps;
+        console.log(`✅ Found ${allAppTestersData.length} apps`);
+      } else {
+        throw new Error('No apps array found');
+      }
+      
+    } catch (fetchError) {
+      console.error('❌ Fetch error:', fetchError.message);
+      return res.status(500).json({ 
+        error: 'Failed to fetch from AppTesters', 
+        details: fetchError.message 
+      });
     }
-    
-    const jsonData = await response.json();
-    const allAppTestersData = jsonData.apps || [];
-    console.log(`✅ Found ${allAppTestersData.length} apps`);
 
     // 2. Filter by time range
     let filteredApps = allAppTestersData;
     let filterText = '';
     
-    if (syncHours > 0) {
+    if (syncHours === -1) {
+      filterText = 'Full Sync';
+      console.log('⚠️ FULL SYNC MODE');
+    } else if (syncHours > 0) {
       const cutoffTime = new Date(Date.now() - syncHours * 60 * 60 * 1000);
       filteredApps = allAppTestersData.filter(app => {
         if (!app.versionDate) return false;
@@ -120,7 +153,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // 4. Phân loại apps hiện tại
+    // 4. Phân loại
     const manualApps = currentData.filter(app => app.source === 'manual');
     const existingAutoApps = currentData.filter(app => app.source === 'apptesters');
     const otherApps = currentData.filter(app => !app.source || 
@@ -128,15 +161,14 @@ export default async function handler(req, res) {
     
     console.log(`✋ Manual: ${manualApps.length} | 🤖 Auto: ${existingAutoApps.length}`);
 
-    // 5. 🎯 LOGIC MỚI: GIỮ TẤT CẢ PHIÊN BẢN
-    const newApps = [];
-    const skippedApps = [];
-    const keptOldVersions = [];
+    // 5. Convert với smart detection
+    const newAutoApps = [];
+    const updatedApps = [];
 
     filteredApps.forEach(app => {
       try {
         const convertedApp = {
-          id: `ipa-${app.bundleID || app.name.replace(/\s+/g, '-').toLowerCase()}-${app.version}`,
+          id: `ipa-${app.bundleID || app.name.replace(/\s+/g, '-').toLowerCase()}`,
           type: 'ipa',
           name: app.name,
           icon: app.iconURL || app.icon,
@@ -152,89 +184,58 @@ export default async function handler(req, res) {
           lastSync: new Date().toISOString()
         };
 
-        // 🔍 Kiểm tra trùng HOÀN TOÀN (tên + bundleID + version)
-        const exactDuplicate = existingAutoApps.find(e => 
+        const existing = existingAutoApps.find(e => 
           e.name === convertedApp.name && 
-          e.bundleID === convertedApp.bundleID &&
-          e.version === convertedApp.version
+          e.bundleID === convertedApp.bundleID
         );
 
-        if (exactDuplicate) {
-          // ⏭️ BỎ QUA - Trùng hoàn toàn
-          skippedApps.push(convertedApp);
-          console.log(`⏭️ Skip (exact): ${app.name} v${app.version}`);
-        } else {
-          // ✨ THÊM MỚI - Chưa có hoặc phiên bản khác
-          newApps.push(convertedApp);
-          
-          // Kiểm tra xem có phiên bản cũ của app này không
-          const oldVersions = existingAutoApps.filter(e => 
-            e.name === convertedApp.name && 
-            e.bundleID === convertedApp.bundleID &&
-            e.version !== convertedApp.version
-          );
-          
-          if (oldVersions.length > 0) {
-            console.log(`📦 New version: ${app.name} v${app.version} (keeping ${oldVersions.length} old version(s))`);
-            keptOldVersions.push(...oldVersions);
-          } else {
-            console.log(`✨ Brand new: ${app.name} v${app.version}`);
+        if (existing) {
+          if (existing.version !== convertedApp.version) {
+            updatedApps.push(convertedApp);
+            console.log(`🔄 Update: ${app.name}`);
           }
+        } else {
+          newAutoApps.push(convertedApp);
+          console.log(`✨ New: ${app.name}`);
         }
       } catch (err) {
         console.error('⚠️ Convert error:', app.name, err.message);
       }
     });
 
-    // 6. 🔄 MERGE: GIỮ TẤT CẢ + THÊM MỚI
-    // Bước 1: Lấy tất cả apps cũ (trừ những cái bị skip vì trùng)
-    const allAutoApps = [...existingAutoApps, ...newApps];
-    
-    // Bước 2: Loại bỏ duplicates (chỉ xóa những cái trùng hoàn toàn)
-    const uniqueApps = [];
-    const seenKeys = new Set();
-    
-    allAutoApps.forEach(app => {
-      const key = `${app.name}|${app.bundleID}|${app.version}`;
-      if (!seenKeys.has(key)) {
-        seenKeys.add(key);
-        uniqueApps.push(app);
-      }
+    const unchangedAutoApps = existingAutoApps.filter(old => {
+      const isUpdated = updatedApps.some(u => u.name === old.name);
+      const isNew = newAutoApps.some(n => n.name === old.name);
+      return !isUpdated && !isNew;
     });
+
+    // 6. Merge & Sort
+    const allAutoApps = [...newAutoApps, ...updatedApps, ...unchangedAutoApps];
     
-    // Bước 3: Sort theo date (mới nhất lên đầu)
-    uniqueApps.sort((a, b) => {
+    allAutoApps.sort((a, b) => {
       const dateA = new Date(a.date || a.lastSync || 0);
       const dateB = new Date(b.date || b.lastSync || 0);
       return dateB - dateA;
     });
 
-    // Manual apps sort
     manualApps.sort((a, b) => {
       const dateA = new Date(a.date || 0);
       const dateB = new Date(b.date || 0);
       return dateB - dateA;
     });
 
-    // Final merge
-    const mergedData = [...uniqueApps, ...manualApps, ...otherApps];
+    const mergedData = [...allAutoApps, ...manualApps, ...otherApps];
 
-    console.log(`📊 Summary:
-  - New apps/versions: ${newApps.length}
-  - Kept old versions: ${keptOldVersions.length}
-  - Skipped (exact duplicates): ${skippedApps.length}
-  - Total auto apps: ${uniqueApps.length}
-  - Manual apps: ${manualApps.length}
-  - TOTAL: ${mergedData.length}`);
+    console.log(`📊 Summary: New=${newAutoApps.length}, Updated=${updatedApps.length}, Total=${mergedData.length}`);
 
-    // 7. Upload to GitHub (chỉ khi có thay đổi)
-    if (newApps.length > 0) {
+    // 7. Upload to GitHub (nếu có thay đổi)
+    if (newAutoApps.length > 0 || updatedApps.length > 0) {
       console.log('📤 Uploading...');
       
       const newContent = Buffer.from(JSON.stringify(mergedData, null, 2)).toString('base64');
       
       const updatePayload = {
-        message: `Sync: +${newApps.length} new (kept all versions)`,
+        message: `Sync: +${newAutoApps.length} new, ~${updatedApps.length} updated`,
         content: newContent,
         branch: 'main'
       };
@@ -260,24 +261,22 @@ export default async function handler(req, res) {
       
       return res.status(200).json({ 
         success: true,
-        message: `Sync thành công: +${newApps.length} mới/phiên bản mới`,
+        message: `Sync thành công: +${newAutoApps.length} mới`,
         filterRange: filterText,
         stats: {
-          new: newApps.length,
-          kept: keptOldVersions.length,
-          skipped: skippedApps.length,
+          new: newAutoApps.length,
+          updated: updatedApps.length,
           total: mergedData.length
         }
       });
     } else {
       return res.status(200).json({ 
         success: true,
-        message: 'Không có app/phiên bản mới',
+        message: 'Không có app mới',
         filterRange: filterText,
         stats: {
           new: 0,
-          kept: keptOldVersions.length,
-          skipped: skippedApps.length,
+          updated: 0,
           total: mergedData.length
         }
       });

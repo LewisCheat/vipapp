@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ⭐ THÊM FONT INTER -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <title>Admin Upload</title>
   <link rel="stylesheet" href="../css/style.css" />
@@ -322,6 +323,7 @@
   <div class="form-box" id="uploadForm">
     <h1>🛠️ Admin Dashboard</h1>
 
+    <!-- 🆕 AUTO-SYNC SECTION -->
     <div class="sync-section">
       <h2>
         🔄 Auto-Sync IPA từ AppTesters
@@ -367,6 +369,7 @@
       <div class="status-message" id="syncStatus"></div>
     </div>
 
+    <!-- UPLOAD MANUAL SECTION (GIỮ NGUYÊN) -->
     <div class="form-section-title">📤 Upload Thủ Công</div>
 
     <div class="form-group">
@@ -375,9 +378,6 @@
         <option value="ipa">IPA</option>
         <option value="dylib">Dylib</option>
         <option value="conf">Conf</option>
-        <option value="sign">✍️ Sign App</option>
-        <option value="cert">🎖️ Cert File</option>
-        <option value="mod">📦 Hot Mod</option>
       </select>
     </div>
 
@@ -602,14 +602,14 @@
         const result = await response.json();
         
         if (response.ok) {
-          showSyncStatus('success', `✅ Sync thành công! Đã thêm ${result.stats.new} app mới`);
+          showSyncStatus('success', `✅ Sync thành công! Đã thêm ${result.stats.synced} app mới`);
           
           // Hiển thị stats
           syncStats.style.display = 'grid';
           document.getElementById('statManual').textContent = result.stats.manual;
-          document.getElementById('statAuto').textContent = result.stats.total - result.stats.manual; // Cần lấy lại data nếu có
+          document.getElementById('statAuto').textContent = result.stats.auto;
           document.getElementById('statTotal').textContent = result.stats.total;
-          document.getElementById('statSynced').textContent = '+' + result.stats.new;
+          document.getElementById('statSynced').textContent = '+' + result.stats.synced;
           
         } else {
           if (result.code === 'NO_AUTH_COOKIE') {
@@ -625,7 +625,7 @@
         // Re-enable button
         syncBtn.disabled = false;
         syncBtnIcon.textContent = '🔄';
-        syncBtnText.textContent = 'Sync Hôm Nay';
+        syncBtnText.textContent = 'Sync Ngay';
       }
     }
 
@@ -640,11 +640,9 @@
       }, 7000);
     }
 
-    // ==================== UPLOAD LOGIC (NÂNG CẤP) ====================
+    // ==================== UPLOAD LOGIC (GIỮ NGUYÊN) ====================
     const selectType = document.getElementById('select-type');
     const usageGroup = document.getElementById('usage-group');
-    const inputFile = document.getElementById('input-file');
-    const labelFile = document.getElementById('label-file');
     const inputVersion = document.getElementById('input-version');
     const labelVersion = document.getElementById('label-version');
     const inputDeveloper = document.getElementById('input-developer');
@@ -652,56 +650,20 @@
 
     function adjustFormFields() {
         const type = selectType.value;
-        
-        // Reset fields to default (IPA/Dylib mode)
-        labelFile.textContent = '📥 Link tải file:';
-        usageGroup.style.display = 'none';
-        inputVersion.style.display = 'block';
-        labelVersion.style.display = 'block';
-        inputDeveloper.style.display = 'block';
-        labelDeveloper.style.display = 'block';
-        
-        // Reset Labels/Placeholders
-        labelVersion.textContent = 'Phiên bản:';
-        inputVersion.placeholder = 'VD: 1.0.0...';
-        labelDeveloper.textContent = 'Nhà phát triển:';
-        inputDeveloper.placeholder = 'VD: Cuios...';
-
         if (type === 'conf') {
-            labelFile.textContent = '🔗 Link Conf:';
+            document.getElementById('label-file').textContent = '🔗 Link Conf:';
             usageGroup.style.display = 'block';
             inputVersion.style.display = 'none';
             labelVersion.style.display = 'none';
             inputDeveloper.style.display = 'none';
             labelDeveloper.style.display = 'none';
-        } else if (type === 'mod') {
-            // Mod: dùng Version/input-version cho Version, Developer/input-developer cho Tag (ví dụ: Gold, Pre)
-            labelVersion.textContent = 'Phiên bản:';
-            inputVersion.placeholder = 'VD: 9.1.0';
-            labelDeveloper.textContent = 'Tag (VD: Gold, Pre):';
-            inputDeveloper.placeholder = 'VD: Gold';
-        } else if (type === 'sign') {
-            // Sign: dùng Version/input-version cho Size, Developer/input-developer cho Date (nếu cần ghi đè)
-            labelVersion.textContent = 'Kích thước/Size:';
-            inputVersion.placeholder = 'VD: 15.5 MB';
-            labelDeveloper.textContent = 'Ngày (tùy chọn):';
-            inputDeveloper.placeholder = 'VD: 2025-11-26 (Để trống nếu lấy ngày hiện tại)';
-        } else if (type === 'cert') {
-            // Cert: dùng Version/input-version cho Check/Status, Developer/input-developer cho Cert Name
-            labelVersion.textContent = 'Trạng thái (Check):';
-            inputVersion.placeholder = 'VD: 🟢 Good';
-            labelDeveloper.textContent = 'Tên Chứng chỉ:';
-            inputDeveloper.placeholder = 'VD: Etisalat - Emirates Telecommunications Corporation';
-        } 
-        
-        // Cần ẩn/hiện nếu các loại file mới có trường trống
-        if (type === 'mod' || type === 'sign' || type === 'cert') {
-             // Ẩn trường Tag nếu là Mod/Sign/Cert (vì dùng badge-select)
-             document.querySelector('.tag-input-group').parentElement.style.display = 'none';
-             document.querySelector('.badge-select').parentElement.style.display = 'block';
         } else {
-             document.querySelector('.tag-input-group').parentElement.style.display = 'block';
-             document.querySelector('.badge-select').parentElement.style.display = 'block';
+            document.getElementById('label-file').textContent = '📥 Link tải file:';
+            usageGroup.style.display = 'none';
+            inputVersion.style.display = 'block';
+            labelVersion.style.display = 'block';
+            inputDeveloper.style.display = 'block';
+            labelDeveloper.style.display = 'block';
         }
     }
 
@@ -722,18 +684,17 @@
       const name = document.getElementById('input-name').value.trim();
       const icon = document.getElementById('input-icon').value.trim();
       const desc = document.getElementById('input-desc').value.trim();
-      const fileLink = document.getElementById('input-file').value.trim();
 
-      if (!name || !icon || !desc || !fileLink) {
-        showUploadStatus('error', '⚠️ Vui lòng điền đầy đủ thông tin (Tên, Icon, Mô tả, Link)!');
+      if (!name || !icon || !desc) {
+        showUploadStatus('error', '⚠️ Vui lòng điền đầy đủ thông tin!');
         return;
       }
 
-      // Lấy Tags và Badge (Chỉ dùng nếu không phải Cert/Mod/Sign)
       const tags = [];
       document.querySelectorAll('.tag-input-group input[type="checkbox"]:checked').forEach(tag => {
         tags.push(tag.value);
       });
+
       const badge = document.querySelector('input[name="badge"]:checked').value;
 
       let appData = {
@@ -742,82 +703,34 @@
           name: name,
           icon: icon,
           desc: desc,
-          source: 'manual' 
+          tags: tags,
+          badge: badge !== 'none' ? badge : null,
+          source: 'manual' // 🏷️ Đánh dấu nguồn manual
       };
-      
-      // Fields chung
-      appData.fileLink = fileLink; // Dùng chung cho các loại có link tải
-      const versionInput = document.getElementById('input-version').value.trim();
-      const developerInput = document.getElementById('input-developer').value.trim();
-      const date = new Date().toISOString().split('T')[0];
 
       if (type === 'conf') {
+          const link = document.getElementById('input-file').value.trim();
           const usage = document.getElementById('input-usage').value.trim();
-          if (!usage) {
-              showUploadStatus('error', '⚠️ Vui lòng điền hướng dẫn sử dụng!');
+          if (!link || !usage) {
+              showUploadStatus('error', '⚠️ Vui lòng điền link và hướng dẫn sử dụng!');
               return;
           }
-          appData.link = fileLink;
+          appData.link = link;
           appData.usage = usage;
-          appData.tags = tags;
-          appData.badge = badge !== 'none' ? badge : null;
-          delete appData.fileLink; 
-
-      } else if (type === 'ipa' || type === 'dylib') {
-          appData.version = versionInput;
-          appData.developer = developerInput;
-          appData.date = date; 
-          appData.tags = tags;
-          appData.badge = badge !== 'none' ? badge : null;
-          
-      } else if (type === 'mod') {
-          // Mod.json fields: id, title (name), description (desc), version (versionInput), downloadUrl (fileLink), date (auto), iconUrl (icon), tag (developerInput)
-          appData.title = name;
-          appData.version = versionInput;
-          appData.downloadUrl = fileLink;
+      } else {
+          const fileLink = document.getElementById('input-file').value.trim();
+          const version = document.getElementById('input-version').value.trim();
+          const developer = document.getElementById('input-developer').value.trim();
+          const date = new Date().toISOString().split('T')[0];
+          if (!fileLink) {
+              showUploadStatus('error', '⚠️ Vui lòng điền link tải file!');
+              return;
+          }
+          appData.fileLink = fileLink;
+          appData.version = version;
+          appData.developer = developer;
           appData.date = date;
-          appData.iconUrl = icon;
-          appData.tag = developerInput || null; // Tag (Gold, Pre, Hot)
-          
-          // Loại bỏ các trường không cần thiết cho mod.json
-          delete appData.name;
-          delete appData.desc;
-          delete appData.fileLink;
-          delete appData.developer;
-
-      } else if (type === 'sign') {
-          // Sign.json fields: id, title (name), description (desc), downloadUrl (fileLink), date (developerInput/auto), iconUrl (icon), size (versionInput), tag (badge)
-          appData.title = name;
-          appData.description = desc;
-          appData.downloadUrl = fileLink;
-          appData.date = developerInput || date;
-          appData.iconUrl = icon;
-          appData.size = versionInput;
-          appData.tag = badge !== 'none' ? badge.toUpperCase() : null; // Tag (NEW, HOT)
-          
-          // Loại bỏ các trường không cần thiết cho sign.json
-          delete appData.name;
-          delete appData.desc;
-          delete appData.fileLink;
-          delete appData.developer;
-          
-      } else if (type === 'cert') {
-          // Cert.json fields: id, filename (name), check (versionInput), certname (developerInput), size (desc), downloadUrl (fileLink), iconUrl (icon), tag (badge)
-          appData.filename = name;
-          appData.check = versionInput;
-          appData.certname = developerInput;
-          appData.size = desc; // Dùng desc làm size vì size cert là định dạng file
-          appData.downloadUrl = fileLink;
-          appData.iconUrl = icon;
-          appData.tag = badge !== 'none' ? badge.toUpperCase() : null;
-
-          // Loại bỏ các trường không cần thiết cho cert.json
-          delete appData.name;
-          delete appData.desc;
-          delete appData.fileLink;
-          delete appData.developer;
       }
-
 
       try {
         showUploadStatus('success', '⏳ Đang upload...');
@@ -884,7 +797,6 @@
       document.getElementById('input-developer').value = '';
       document.querySelectorAll('.tag-input-group input').forEach(tag => tag.checked = false);
       document.getElementById('badge-none').checked = true;
-      adjustFormFields(); // Reset form field placeholders/labels
     }
   </script>
 
