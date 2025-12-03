@@ -1,5 +1,21 @@
 [
   {
+    "id": "ipa-1764771933305",
+    "type": "ipa",
+    "name": "Soul Knight",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_w9vHLsHR35PbNzPKs3eF0aj_DXa91-aZkmtdiOINCg&s",
+    "desc": "Menu Hack Vip - Tap 3 Ngón Vào Màn Hình",
+    "source": "manual",
+    "fileLink": "https://transfer.it/t/ma0DXB9TEBbA",
+    "version": "",
+    "developer": "tuiducios",
+    "date": "2025-12-03",
+    "tags": [
+      "game"
+    ],
+    "badge": "new"
+  },
+  {
     "id": "ipa-com.adobe.PSMobile-25.49.0",
     "type": "ipa",
     "name": "PSExpress",
