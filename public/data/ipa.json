@@ -1,5 +1,21 @@
 [
   {
+    "id": "ipa-1764859434291",
+    "type": "ipa",
+    "name": "MENU AOV V2",
+    "icon": "https://play-lh.googleusercontent.com/a7vbOHF4UZx0mAg4akh6zL95xdAuIfF_LAZgQCF1bdAuW1UHU52qqwE3x_cfca4p5SP160NsKGSq2jVZcOf3wg=w240-h480-rw",
+    "desc": "Menu Aov No Key V2 - 3 Ngón Tap Màn Hình",
+    "source": "manual",
+    "fileLink": "https://drive.google.com/file/d/1x3S7FTM-woxAvUIY5ssP7-OeSZaelCU_/view?usp=drivesdk",
+    "version": "1.0",
+    "developer": "tuiducios",
+    "date": "2025-12-04",
+    "tags": [
+      "game"
+    ],
+    "badge": "new"
+  },
+  {
     "id": "ipa-com.revivasoftworks.Snore-Lab-6.0.6",
     "type": "ipa",
     "name": "SnoreLab",
