@@ -126,6 +126,240 @@
     "lastSync": "2025-12-04T03:06:58.433Z"
   },
   {
+    "id": "ipa-com.alightcreative.motion-6.2.45",
+    "type": "ipa",
+    "name": "AlightMotion",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.alightcreative.motion.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/AlightMotion_6.2.45_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.2.45",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.alightcreative.motion",
+    "lastSync": "2025-12-04T14:42:15.285Z"
+  },
+  {
+    "id": "ipa-com.yazio.ios.YAZIO-12.61.1",
+    "type": "ipa",
+    "name": "Yazio",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.yazio.ios.YAZIO.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Yazio_12.61.1_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "12.61.1",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.yazio.ios.YAZIO",
+    "lastSync": "2025-12-04T14:42:15.285Z"
+  },
+  {
+    "id": "ipa-com.moonly.Moonly-2.5.4",
+    "type": "ipa",
+    "name": "Moonly",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.moonly.Moonly.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Moonly_2.5.4_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.5.4",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.moonly.Moonly",
+    "lastSync": "2025-12-04T14:42:15.285Z"
+  },
+  {
+    "id": "ipa-com.thenovik.Presets-2.4.9",
+    "type": "ipa",
+    "name": "Edith",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.thenovik.Presets.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Edith_2.4.9_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.4.9",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.thenovik.Presets",
+    "lastSync": "2025-12-04T14:42:15.285Z"
+  },
+  {
+    "id": "ipa-com.lightricks.Enlight-Video-2.79",
+    "type": "ipa",
+    "name": "Videoleap",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.lightricks.Enlight-Video.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Videoleap_2.79_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.79",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.lightricks.Enlight-Video",
+    "lastSync": "2025-12-04T14:42:15.285Z"
+  },
+  {
+    "id": "ipa-com.impalastudios.pianofree-2.16.3",
+    "type": "ipa",
+    "name": "ThePiano",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.impalastudios.pianofree.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "music"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/ThePiano_2.16.3_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.16.3",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.impalastudios.pianofree",
+    "lastSync": "2025-12-04T14:42:15.286Z"
+  },
+  {
+    "id": "ipa-com.neybox.Pillow-6.2.3",
+    "type": "ipa",
+    "name": "Pillow",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.neybox.Pillow.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Pillow_6.2.3_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.2.3",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.neybox.Pillow",
+    "lastSync": "2025-12-04T14:42:15.286Z"
+  },
+  {
+    "id": "ipa-com.mwm.piano-app-3.54.01",
+    "type": "ipa",
+    "name": "Piano",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.mwm.piano-app.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "music"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Piano_3.54.01_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "3.54.01",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.mwm.piano-app",
+    "lastSync": "2025-12-04T14:42:15.286Z"
+  },
+  {
+    "id": "ipa-com.aiby.wtcoin-1.20",
+    "type": "ipa",
+    "name": "CoinID",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.aiby.wtcoin.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/CoinID_1.20_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "1.20",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.aiby.wtcoin",
+    "lastSync": "2025-12-04T14:42:15.286Z"
+  },
+  {
+    "id": "ipa-com.roehl.habitkit-1.14.3",
+    "type": "ipa",
+    "name": "HabitKit",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.roehl.habitkit.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/HabitKit_1.14.3_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "1.14.3",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.roehl.habitkit",
+    "lastSync": "2025-12-04T14:42:15.286Z"
+  },
+  {
+    "id": "ipa-in.muditbhargava.LookUp-12.0.3",
+    "type": "ipa",
+    "name": "LookUp",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/in.muditbhargava.LookUp.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/LookUp_12.0.3_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "12.0.3",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "in.muditbhargava.LookUp",
+    "lastSync": "2025-12-04T14:42:15.286Z"
+  },
+  {
+    "id": "ipa-com.calisthenics.thenx-6.5.3",
+    "type": "ipa",
+    "name": "Thenx",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.calisthenics.thenx.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "photo"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Thenx_6.5.3_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.5.3",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.calisthenics.thenx",
+    "lastSync": "2025-12-04T14:42:15.286Z"
+  },
+  {
+    "id": "ipa-com.AppChief.ArabicArt-9.3.6",
+    "type": "ipa",
+    "name": "",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.AppChief.ArabicArt.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/_9.3.6_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "9.3.6",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.AppChief.ArabicArt",
+    "lastSync": "2025-12-04T14:42:15.286Z"
+  },
+  {
     "id": "ipa-com.adobe.PSMobile-25.49.0",
     "type": "ipa",
     "name": "PSExpress",
