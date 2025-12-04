@@ -1,19 +1,129 @@
 [
   {
-    "id": "ipa-1764771933305",
+    "id": "ipa-com.revivasoftworks.Snore-Lab-6.0.6",
     "type": "ipa",
-    "name": "Soul Knight",
-    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_w9vHLsHR35PbNzPKs3eF0aj_DXa91-aZkmtdiOINCg&s",
-    "desc": "Menu Hack Vip - Tap 3 Ngón Vào Màn Hình",
-    "source": "manual",
-    "fileLink": "https://transfer.it/t/ma0DXB9TEBbA",
-    "version": "",
-    "developer": "tuiducios",
-    "date": "2025-12-03",
+    "name": "SnoreLab",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.revivasoftworks.Snore-Lab.png",
+    "desc": "Injected with Subscription Unlocked",
     "tags": [
-      "game"
+      "photo"
     ],
-    "badge": "new"
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/SnoreLab_6.0.6_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.0.6",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.revivasoftworks.Snore-Lab",
+    "lastSync": "2025-12-04T03:06:58.431Z"
+  },
+  {
+    "id": "ipa-com.kavsoft.MockviewApp-4.1.1",
+    "type": "ipa",
+    "name": "Mockview",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.kavsoft.MockviewApp.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "photo"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Mockview_4.1.1_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "4.1.1",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.kavsoft.MockviewApp",
+    "lastSync": "2025-12-04T03:06:58.432Z"
+  },
+  {
+    "id": "ipa-com.myfitnesspal.mfp-25.47.0",
+    "type": "ipa",
+    "name": "MyFitnessPal",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.myfitnesspal.mfp.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/MyFitnessPal_25.47.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "25.47.0",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.myfitnesspal.mfp",
+    "lastSync": "2025-12-04T03:06:58.432Z"
+  },
+  {
+    "id": "ipa-com.photoeditor.polish-2.1.2",
+    "type": "ipa",
+    "name": "Polish",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.photoeditor.polish.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "photo"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Polish_2.1.2_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.1.2",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.photoeditor.polish",
+    "lastSync": "2025-12-04T03:06:58.432Z"
+  },
+  {
+    "id": "ipa-com.snowcorp.epik-6.5.0",
+    "type": "ipa",
+    "name": "EPIK",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.snowcorp.epik.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/EPIK_6.5.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.5.0",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.snowcorp.epik",
+    "lastSync": "2025-12-04T03:06:58.432Z"
+  },
+  {
+    "id": "ipa-com.mwm.stems-4.02.20",
+    "type": "ipa",
+    "name": "Stemz",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.mwm.stems.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Stemz_4.02.20_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "4.02.20",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.mwm.stems",
+    "lastSync": "2025-12-04T03:06:58.433Z"
+  },
+  {
+    "id": "ipa-com.hassantaleb.mockup-4.6",
+    "type": "ipa",
+    "name": "Animock",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.hassantaleb.mockup.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/04-12-2025/Animock_4.6_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "4.6",
+    "developer": "apptesters.org",
+    "date": "2025-12-04",
+    "source": "apptesters",
+    "bundleID": "com.hassantaleb.mockup",
+    "lastSync": "2025-12-04T03:06:58.433Z"
   },
   {
     "id": "ipa-com.adobe.PSMobile-25.49.0",
@@ -6658,6 +6768,22 @@
     "source": "apptesters",
     "bundleID": "com.mwm.guitartuner",
     "lastSync": "2025-11-19T15:45:31.928Z"
+  },
+  {
+    "id": "ipa-1764771933305",
+    "type": "ipa",
+    "name": "Soul Knight",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_w9vHLsHR35PbNzPKs3eF0aj_DXa91-aZkmtdiOINCg&s",
+    "desc": "Menu Hack Vip - Tap 3 Ngón Vào Màn Hình",
+    "source": "manual",
+    "fileLink": "https://transfer.it/t/ma0DXB9TEBbA",
+    "version": "",
+    "developer": "tuiducios",
+    "date": "2025-12-03",
+    "tags": [
+      "game"
+    ],
+    "badge": "new"
   },
   {
     "id": "ipa-1764302023121",
