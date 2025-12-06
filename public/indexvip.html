@@ -140,7 +140,7 @@
         <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white">
            <i data-lucide="zap" class="w-6 h-6"></i>
         </div>
-        Home - CheatLibrary
+        Kho Vip
       </div>
 
       <div class="flex-1 flex justify-end ml-4">
@@ -254,11 +254,14 @@
     };
 
     // --- HELPER SORT MỚI NHẤT ---
+    // Hàm này sẽ sắp xếp mảng theo thời gian giảm dần (mới nhất lên đầu)
+    // Ưu tiên 'lastSync' (ISO string từ auto-sync) rồi đến 'date'
     function sortItemsByDate(items) {
         return items.sort((a, b) => {
+            // Lấy timestamp, nếu không có thì mặc định là 0
             const timeA = new Date(a.lastSync || a.date || 0).getTime();
             const timeB = new Date(b.lastSync || b.date || 0).getTime();
-            return timeB - timeA;
+            return timeB - timeA; // Giảm dần: Lớn (mới) -> Bé (cũ)
         });
     }
 
@@ -275,14 +278,17 @@
 
       await Promise.all(endpoints.map(async e => {
         try {
+          // Thêm timestamp để bypass cache trình duyệt: ?t=Date.now()
           const res = await fetch(`${e.u}?t=${Date.now()}`);
           if(res.ok) {
               let data = await res.json();
+              // Sắp xếp dữ liệu ngay khi tải về
               DB[e.k] = sortItemsByDate(data);
           }
         } catch(err) { console.error(`Lỗi tải ${e.k}`, err); }
       }));
       
+      // Nếu đang ở tab nào thì render lại tab đó để thấy dữ liệu mới
       renderContent(document.getElementById('searchInput').value);
     }
 
@@ -325,6 +331,7 @@
            ...DB.dylib.map(i=>({...i, _type:'DYLIB'}))
         ];
         
+        // Sắp xếp lại danh sách tổng hợp theo thời gian mới nhất
         allApps = sortItemsByDate(allApps);
         
         const featured = allApps.filter(i => {
@@ -349,6 +356,7 @@
             }
         }
         
+        // Recent apps (đã được sort ở trên nên slice 0-12 là chính xác những cái mới nhất)
         const recent = allApps.slice(0, 12);
 
         html = `
@@ -390,16 +398,8 @@
         if (subTab === 'sign') items = DB.cert_sign;
         else if (subTab === 'cert') items = DB.cert_cert;
         else if (subTab === 'mod') items = DB.cert_mod;
-        
+        // Items đã được sort ở loadData
         if(query) items = filterItems(items, query);
-
-        // Logic hiển thị item đặc biệt cho tab Cert File
-        let gridHtml = '';
-        if (subTab === 'cert') {
-             gridHtml = items.length ? items.map(i => createCertItem(i)).join('') : emptyState();
-        } else {
-             gridHtml = items.length ? items.map(i => createGridItem(i, subTab.toUpperCase())).join('') : emptyState();
-        }
 
         html = `
           <h1 class="text-3xl font-black mb-4 text-gray-900 dark:text-white">Chứng Chỉ & Mod</h1>
@@ -409,13 +409,14 @@
              <button onclick="switchSubTab('mod')" class="sub-tab-btn ${subTab==='mod'?'active':''}">📦 Hot Mod</button>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 animate-in slide-in-from-bottom-2 duration-300">
-             ${gridHtml}
+             ${items.length ? items.map(i => createGridItem(i, subTab.toUpperCase())).join('') : emptyState()}
           </div>
         `;
       } else {
         if (tab === 'ipa') items = DB.ipa;
         else if (tab === 'dylib') items = DB.dylib;
         else if (tab === 'conf') items = DB.conf;
+        // Items đã được sort ở loadData
         
         if(query) items = filterItems(items, query);
 
@@ -519,65 +520,6 @@
                      <p class="text-[10px] text-gray-200 uppercase font-bold tracking-wider">Top Download</p>
                   </div>
                </div>
-            </div>
-         </div>
-       `;
-    }
-
-    // --- ITEM RENDERER CHO CERT FILE (NEW) ---
-    function createCertItem(i) {
-       const title = i.name || i.title || 'Certificate file';
-       const icon = i.icon || i.iconUrl || 'https://placehold.co/100';
-       // Mapping: Dùng desc hoặc certname cho Tên Chứng Chỉ
-       const certName = i.desc || i.certname || 'Chưa cập nhật'; 
-       // Status giả lập (hoặc lấy từ json nếu có)
-       const status = i.status || 'Good'; 
-       const isGood = status.toLowerCase() === 'good';
-       const statusColor = isGood ? 'text-green-500' : 'text-red-500';
-       const statusIcon = isGood ? '🟢' : '🔴';
-       // Check tag 'new'
-       const isNew = (i.tag || i.badge || '').toLowerCase().includes('new');
-
-       return `
-         <div onclick='openModal(${JSON.stringify(i).replace(/'/g, "&apos;")}, "CERT")' class="col-span-1 bg-white dark:bg-cardDark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 relative overflow-hidden group hover:border-brand/50 transition-all cursor-pointer">
-            
-            <!-- Header: Icon & Title & Status -->
-            <div class="flex items-start gap-4 mb-4">
-                <div class="relative shrink-0">
-                    <img src="${icon}" class="w-16 h-16 rounded-2xl shadow-md object-cover bg-gray-100 dark:bg-gray-800" onerror="this.src='https://placehold.co/100'">
-                    ${isNew ? `<span class="absolute -top-2 -left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm transform -rotate-12">NEW</span>` : ''}
-                </div>
-                <div class="flex-1 min-w-0 pt-1">
-                    <h3 class="text-lg font-extrabold text-gray-900 dark:text-white leading-tight mb-1">${title}</h3>
-                    <div class="flex items-center gap-1.5 text-sm font-semibold">
-                        <span class="text-gray-500 dark:text-gray-400">Trạng thái:</span>
-                        <span class="${statusColor} flex items-center gap-1">
-                           ${statusIcon} ${status}
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Details -->
-            <div class="space-y-2.5">
-                <div class="flex items-start gap-2.5">
-                    <i data-lucide="signature" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i>
-                    <div class="text-sm text-gray-600 dark:text-gray-300">
-                        <span class="font-medium text-gray-900 dark:text-gray-200">Tên Chứng Chỉ:</span> 
-                        <span class="text-gray-500 dark:text-gray-400 leading-snug">${certName}</span>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2.5">
-                    <i data-lucide="file-archive" class="w-4 h-4 text-red-500 shrink-0"></i>
-                    <div class="text-sm text-gray-600 dark:text-gray-300">
-                        <span class="font-medium text-gray-900 dark:text-gray-200">Định dạng:</span> 
-                        <span class="text-gray-500 dark:text-gray-400">.p12, .mobileprovision</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="absolute top-4 right-4 text-brand opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
-                <i data-lucide="download" class="w-5 h-5"></i>
             </div>
          </div>
        `;
@@ -761,4 +703,3 @@
   </script>
 </body>
 </html>
-

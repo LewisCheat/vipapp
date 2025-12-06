@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <title>Dylib - CheatLibrary</title>
+  <title>Dylib - Kho App VIP</title>
   <link rel="stylesheet" href="../css/style.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4727200587055365"
      crossorigin="anonymous"></script>
@@ -424,7 +424,6 @@
     <p style="grid-column: 1 / -1; text-align: center; color: var(--text-light);">Đang tải ứng dụng...</p>
   </div>
 
-  <!-- Download Popup -->
   <div class="download-popup" id="downloadPopup">
     <div class="download-popup-content">
       <button class="close-btn" onclick="closeDownloadPopup()">&times;</button>
@@ -548,6 +547,38 @@
       });
     }
 
+    // ⭐ ĐÃ SỬA: Sử dụng đường dẫn 'pages/admin.html' để khớp với cấu trúc thư mục từ index.html
+    function filterTag(tag) {
+        // Kiểm tra nếu người dùng nhấn vào nút 'Tools'
+        if (tag === 'tools') {
+            // Đường dẫn đúng từ góc nhìn của index.html (thư mục gốc)
+            // ⚠️ THAY 'admin.html' BẰNG TÊN FILE MỚI NẾU BẠN ĐÃ ĐỔI TÊN ĐỂ ẨN
+            const adminPageUrl = 'pages/admin.html'; 
+            
+            // Chuyển hướng trang chính trong iframe
+            window.top.document.querySelector('.content-frame').src = adminPageUrl;
+            
+            // Cập nhật trạng thái active của nút (nếu muốn)
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.filter-btn[onclick*="filterTag(\'tools\')"]').classList.add('active');
+
+            // Ngăn chặn việc lọc danh sách app
+            return; 
+        }
+
+        // Logic lọc bình thường cho các tag khác
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active'); 
+
+        if (tag === 'all') {
+          renderApps(dylibApps);
+        } else {
+          const filtered = dylibApps.filter(app => app.tags && app.tags.includes(tag));
+          renderApps(filtered);
+        }
+    }
+    // ⭐ KẾT THÚC PHẦN SỬA ĐỔI
+
     function showDownloadPopup(app) {
       document.getElementById('popup-icon').src = app.icon;
       document.getElementById('popup-name').textContent = app.name;
@@ -580,7 +611,7 @@
         return;
       }
       
-      const link4mUrl = `https://link4m.co/st?api=68878290a5a29e141e3df398&url=${encodeURIComponent(currentAppLink)}`;
+      const link4mUrl = `https://link4m.co/st?api=691e7751f7bfff4e4434ecd5&url=${encodeURIComponent(currentAppLink)}`;
       window.open(link4mUrl, '_blank');
       
       setTimeout(() => closeDownloadPopup(), 1000);
@@ -708,17 +739,6 @@
       }, 2000);
     }
 
-    function filterTag(tag) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      if (tag === 'all') {
-        renderApps(dylibApps);
-      } else {
-        const filtered = dylibApps.filter(app => app.tags && app.tags.includes(tag));
-        renderApps(filtered);
-      }
-    }
 
     downloadPopup.addEventListener('click', (event) => {
       if (event.target === downloadPopup) closeDownloadPopup();

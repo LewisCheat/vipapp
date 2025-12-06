@@ -3,890 +3,477 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <title>Admin Panel 🔐</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <style>
-    body {
-      padding: 20px;
-      background: none;
-      color: var(--text-light);
-      height: auto;
-      display: block;
-      overflow-y: auto;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: var(--text-light);
-      font-size: 1.8em;
-    }
-    .login-box, .form-box {
-      max-width: 600px;
-      margin: 20px auto;
-      background: var(--card-bg-light);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px var(--card-shadow-light);
-      transition: var(--transition);
-    }
-    .form-box {
-      display: none;
-    }
-    body.dark .login-box, body.dark .form-box {
-        background: var(--card-bg-dark);
-        box-shadow: 0 8px 25px var(--card-shadow-dark);
-    }
-    
-    /* 🆕 AUTO-SYNC SECTION */
-    .sync-section {
-      background: rgba(26, 188, 156, 0.05);
-      border: 2px solid var(--primary);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    body.dark .sync-section {
-      background: rgba(26, 188, 156, 0.1);
-      border-color: var(--primary);
-    }
-    
-    .sync-section h2 {
-      color: var(--primary);
-      font-size: 1.3em;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    
-    .sync-btn {
-      background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
-      color: white;
-      padding: 14px 30px;
-      font-size: 1.1em;
-      font-weight: 600;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(26, 188, 156, 0.3);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    
-    .sync-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(26, 188, 156, 0.5);
-    }
-    
-    .sync-btn:active {
-      transform: translateY(0);
-    }
-    
-    .sync-btn:disabled {
-      background: #95a5a6;
-      cursor: not-allowed;
-      opacity: 0.6;
-      transform: none;
-    }
-    
-    .sync-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .stat-box {
-      background: var(--card-bg-light);
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    body.dark .stat-box {
-      background: var(--card-bg-dark);
-    }
-    
-    .stat-box h3 {
-      font-size: 2em;
-      color: var(--primary);
-      margin: 0;
-    }
-    
-    .stat-box p {
-      font-size: 0.9em;
-      color: var(--text-light);
-      margin: 5px 0 0 0;
-    }
-    body.dark .stat-box p {
-      color: var(--text-dark);
-    }
-    
-    /* Rest of existing styles... */
-    label {
-      font-weight: 600;
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 6px;
-      color: var(--text-light);
-      font-size: 0.95em;
-    }
-    body.dark label {
-      color: var(--text-dark);
-    }
-    input, textarea, select {
-      width: calc(100% - 20px);
-      padding: 12px 10px;
-      margin-top: 6px;
-      border-radius: 10px;
-      border: 2px solid var(--border-light);
-      font-size: 0.95em;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--text-light);
-      transition: var(--transition);
-      font-family: inherit;
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.1);
-    }
-    input::placeholder, textarea::placeholder {
-        color: rgba(0, 0, 0, 0.5);
-    }
-    body.dark input, body.dark textarea, body.dark select {
-        background: rgba(30, 30, 30, 0.9);
-        border-color: var(--border-dark);
-        color: var(--text-dark);
-    }
-    body.dark input::placeholder, body.dark textarea::placeholder {
-        color: rgba(255, 255, 255, 0.4);
-    }
-    button {
-      margin-top: 20px;
-      background: #3498db;
-      color: white;
-      padding: 14px 20px;
-      font-size: 1em;
-      font-weight: 600;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: var(--transition);
-      width: 100%;
-    }
-    button:hover {
-      background: #2980b9;
-    }
-    .logout-btn {
-      background: #e74c3c;
-      margin-top: 10px;
-    }
-    .logout-btn:hover {
-      background: #c0392b;
-    }
-    .status-message {
-      margin-top: 15px;
-      padding: 12px 15px;
-      border-radius: 10px;
-      text-align: center;
-      display: none;
-      font-weight: 500;
-    }
-    .status-message.success {
-      background: rgba(46, 204, 113, 0.2);
-      color: #27ae60;
-      border: 1px solid #27ae60;
-    }
-    .status-message.error {
-      background: rgba(231, 76, 60, 0.2);
-      color: #e74c3c;
-      border: 1px solid #e74c3c;
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    .tag-input-group {
-      display: flex;
-      gap: 10px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-    .tag-checkbox {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
-      background: rgba(26, 188, 156, 0.1);
-      border: 1px solid var(--primary);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .tag-checkbox:hover {
-      background: rgba(26, 188, 156, 0.2);
-    }
-    .tag-checkbox input {
-      width: auto;
-      padding: 0;
-      margin: 0;
-      border: none;
-      background: none;
-      cursor: pointer;
-      transform: scale(1.2);
-    }
-    .tag-checkbox input:focus {
-      box-shadow: none;
-    }
-    .tag-checkbox label {
-      margin: 0;
-      font-weight: 500;
-      cursor: pointer;
-      color: var(--primary);
-      font-size: 0.9em;
-    }
-    .badge-select {
-      display: flex;
-      gap: 10px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-    .badge-option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      background: rgba(100, 100, 100, 0.1);
-      border: 1px solid rgba(100, 100, 100, 0.3);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .badge-option input {
-      width: auto;
-      padding: 0;
-      margin: 0;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-    .badge-option input:focus {
-      box-shadow: none;
-    }
-    .badge-option label {
-      margin: 0;
-      font-weight: 500;
-      cursor: pointer;
-      font-size: 0.9em;
-    }
-    .form-section-title {
-      font-size: 1.1em;
-      font-weight: 700;
-      color: var(--primary);
-      margin-top: 20px;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--primary);
-    }
-    
-    .spinner {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      border: 3px solid rgba(255,255,255,.3);
-      border-radius: 50%;
-      border-top-color: #fff;
-      animation: spin 0.8s ease-in-out infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="login-box" id="loginBox">
-    <h1>🔐 Admin Đăng Nhập</h1>
-    <label for="password">Mật khẩu:</label>
-    <input type="password" id="password" placeholder="🔑 Nhập mật khẩu admin..." />
-    <button onclick="checkPassword()">Đăng nhập</button>
-    <div class="status-message" id="loginStatus"></div>
-  </div>
-
-  <div class="form-box" id="uploadForm">
-    <h1>🛠️ Admin Dashboard</h1>
-
-    <div class="sync-section">
-      <h2>
-        🔄 Auto-Sync IPA từ AppTesters
-      </h2>
-      <p style="color: var(--text-light); margin: 10px 0;">
-        <strong>Sync hàng ngày tự động lúc 9:00 AM</strong><br>
-        Hoặc bấm nút bên dưới để sync ngay (chỉ lấy IPA hôm nay)
-      </p>
-      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-        <button class="sync-btn" id="syncBtn" onclick="syncIPA(false)">
-          <span id="syncBtnIcon">🔄</span>
-          <span id="syncBtnText">Sync Hôm Nay</span>
-        </button>
-        <button class="sync-btn" id="forceSyncBtn" onclick="syncIPA(true)" 
-                style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
-          <span id="forceSyncBtnIcon">⚠️</span>
-          <span id="forceSyncBtnText">Force Full Sync</span>
-        </button>
-      </div>
-      <p style="color: #e74c3c; font-size: 0.85em; margin-top: 10px;">
-        ⚠️ Force Full Sync sẽ xử lý toàn bộ dữ liệu, chỉ dùng khi cần thiết
-      </p>
-      
-      <div class="sync-stats" id="syncStats" style="display: none;">
-        <div class="stat-box">
-          <h3 id="statManual">-</h3>
-          <p>Thủ công</p>
-        </div>
-        <div class="stat-box">
-          <h3 id="statAuto">-</h3>
-          <p>Tự động</p>
-        </div>
-        <div class="stat-box">
-          <h3 id="statTotal">-</h3>
-          <p>Tổng cộng</p>
-        </div>
-        <div class="stat-box">
-          <h3 id="statSynced">-</h3>
-          <p>Mới sync</p>
-        </div>
-      </div>
-      
-      <div class="status-message" id="syncStatus"></div>
-    </div>
-
-    <div class="form-section-title">📤 Upload Thủ Công</div>
-
-    <div class="form-group">
-      <label for="select-type">📁 Chọn loại upload:</label>
-      <select id="select-type">
-        <option value="ipa">IPA</option>
-        <option value="dylib">Dylib</option>
-        <option value="conf">Conf</option>
-        <option value="sign">✍️ Sign App</option>
-        <option value="cert">🎖️ Cert File</option>
-        <option value="mod">📦 Hot Mod</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="input-name">📛 Tên ứng dụng:</label>
-      <input type="text" id="input-name" placeholder="VD: Instagram Pro..." />
-    </div>
-
-    <div class="form-group">
-      <label for="input-icon">🖼️ Link Icon:</label>
-      <input type="text" id="input-icon" placeholder="https://..." />
-    </div>
-
-    <div class="form-group">
-      <label for="input-file" id="label-file">📥 Link tải file:</label>
-      <input type="text" id="input-file" placeholder="https://..." />
-    </div>
-
-    <div class="form-group">
-      <label for="input-desc">📝 Mô tả:</label>
-      <textarea id="input-desc" rows="4" placeholder="Nhập mô tả..."></textarea>
-    </div>
-
-    <div class="form-group" id="usage-group" style="display: none;">
-      <label for="input-usage">📋 Hướng dẫn sử dụng:</label>
-      <textarea id="input-usage" rows="4" placeholder="Nhập hướng dẫn..."></textarea>
-    </div>
-
-    <div class="form-section-title">🏷️ Danh mục & Thẻ</div>
-    <div class="form-group">
-      <label>Chọn danh mục:</label>
-      <div class="tag-input-group">
-        <div class="tag-checkbox">
-          <input type="checkbox" id="tag-game" value="game">
-          <label for="tag-game">🎮 Game</label>
-        </div>
-        <div class="tag-checkbox">
-          <input type="checkbox" id="tag-photo" value="photo">
-          <label for="tag-photo">📸 Photo</label>
-        </div>
-        <div class="tag-checkbox">
-          <input type="checkbox" id="tag-utility" value="utility">
-          <label for="tag-utility">🔧 Utility</label>
-        </div>
-        <div class="tag-checkbox">
-          <input type="checkbox" id="tag-vpn" value="vpn">
-          <label for="tag-vpn">🛡️ VPN</label>
-        </div>
-        <div class="tag-checkbox">
-          <input type="checkbox" id="tag-social" value="social">
-          <label for="tag-social">💬 Social</label>
-        </div>
-        <div class="tag-checkbox">
-          <input type="checkbox" id="tag-music" value="music">
-          <label for="tag-music">🎵 Music</label>
-        </div>
-        <div class="tag-checkbox">
-          <input type="checkbox" id="tag-productivity" value="productivity">
-          <label for="tag-productivity">⚡ Prod</label>
-        </div>
-        <div class="tag-checkbox">
-          <input type="checkbox" id="tag-tools" value="tools">
-          <label for="tag-tools">🛠️ Tools</label>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-section-title">⭐ Nhãn Ứng Dụng</div>
-    <div class="form-group">
-      <label>Chọn nhãn (tối đa 1):</label>
-      <div class="badge-select">
-        <div class="badge-option">
-          <input type="radio" name="badge" id="badge-none" value="none" checked>
-          <label for="badge-none">Không</label>
-        </div>
-        <div class="badge-option">
-          <input type="radio" name="badge" id="badge-new" value="new">
-          <label for="badge-new">🆕 Mới</label>
-        </div>
-        <div class="badge-option">
-          <input type="radio" name="badge" id="badge-trending" value="trending">
-          <label for="badge-trending">🔥 Hot</label>
-        </div>
-        <div class="badge-option">
-          <input type="radio" name="badge" id="badge-top" value="top">
-          <label for="badge-top">⭐ Top</label>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-section-title">ℹ️ Thông tin bổ sung</div>
-    <div class="form-group">
-      <label for="input-version" id="label-version">Phiên bản:</label>
-      <input type="text" id="input-version" placeholder="VD: 1.0.0..." />
-    </div>
-
-    <div class="form-group">
-      <label for="input-developer" id="label-developer">Nhà phát triển:</label>
-      <input type="text" id="input-developer" placeholder="VD: Cuios..." />
-    </div>
-
-    <button onclick="uploadApp()">📤 Upload</button>
-    <button class="logout-btn" onclick="logout()">🚪 Đăng xuất</button>
-    <div class="status-message" id="uploadStatus"></div>
-  </div>
-
+  <title>Admin Dashboard - Cheatlibrary</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
   <script>
-    let authToken = null;
-    const loginBox = document.getElementById('loginBox');
-    const uploadForm = document.getElementById('uploadForm');
-    const loginStatus = document.getElementById('loginStatus');
-    const uploadStatus = document.getElementById('uploadStatus');
-
-    // ==================== AUTH LOGIC (GIỮ NGUYÊN) ====================
-    async function checkExistingAuth() {
-      try {
-        const response = await fetch('/api/auth/verify', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ token: '' })
-        });
-        
-        const result = await response.json();
-        if (result.success) {
-          showUploadForm();
-        }
-      } catch (error) {
-        console.log('No existing auth session');
-      }
-    }
-
-    checkExistingAuth();
-
-    async function checkPassword() {
-      const password = document.getElementById('password').value;
-      
-      if (!password) {
-        showLoginStatus('error', '⚠️ Vui lòng nhập mật khẩu!');
-        return;
-      }
-
-      try {
-        const response = await fetch('/api/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ password })
-        });
-
-        const result = await response.json();
-        
-        if (response.ok) {
-          authToken = result.token;
-          showLoginStatus('success', '✅ Đăng nhập thành công!');
-          
-          setTimeout(() => {
-            loginStatus.style.display = 'none';
-            showUploadForm();
-          }, 2000);
-          
-        } else {
-          showLoginStatus('error', '❌ ' + (result.error || 'Đăng nhập thất bại'));
-        }
-      } catch (error) {
-        showLoginStatus('error', '❌ Lỗi kết nối: ' + error.message);
-      }
-    }
-
-    function showLoginStatus(type, message) {
-      loginStatus.className = `status-message ${type}`;
-      loginStatus.textContent = message;
-      loginStatus.style.display = 'block';
-      
-      if (type === 'error') {
-        setTimeout(() => {
-          loginStatus.style.display = 'none';
-        }, 5000);
-      }
-    }
-
-    function showUploadForm() {
-      loginBox.style.display = 'none';
-      uploadForm.style.display = 'block';
-    }
-
-    function logout() {
-      authToken = null;
-      document.cookie = "admin_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      loginBox.style.display = 'block';
-      uploadForm.style.display = 'none';
-      document.getElementById('password').value = '';
-      showUploadStatus('success', '🚪 Đã đăng xuất!');
-      setTimeout(() => {
-        uploadStatus.style.display = 'none';
-      }, 3000);
-    }
-
-    // ==================== 🆕 AUTO-SYNC LOGIC ====================
-    async function syncIPA() {
-      const syncBtn = document.getElementById('syncBtn');
-      const syncBtnIcon = document.getElementById('syncBtnIcon');
-      const syncBtnText = document.getElementById('syncBtnText');
-      const syncStatusEl = document.getElementById('syncStatus');
-      const syncStats = document.getElementById('syncStats');
-      
-      // Disable button
-      syncBtn.disabled = true;
-      syncBtnIcon.innerHTML = '<span class="spinner"></span>';
-      syncBtnText.textContent = 'Đang sync...';
-      
-      try {
-        const response = await fetch('/api/sync-ipa', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-
-        const result = await response.json();
-        
-        if (response.ok) {
-          showSyncStatus('success', `✅ Sync thành công! Đã thêm ${result.stats.new} app mới`);
-          
-          // Hiển thị stats
-          syncStats.style.display = 'grid';
-          document.getElementById('statManual').textContent = result.stats.manual;
-          document.getElementById('statAuto').textContent = result.stats.total - result.stats.manual; // Cần lấy lại data nếu có
-          document.getElementById('statTotal').textContent = result.stats.total;
-          document.getElementById('statSynced').textContent = '+' + result.stats.new;
-          
-        } else {
-          if (result.code === 'NO_AUTH_COOKIE') {
-            showSyncStatus('error', '❌ Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.');
-            logout();
-          } else {
-            showSyncStatus('error', `❌ Lỗi: ${result.error || 'Không thể sync'}`);
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: { 
+            brand: '#6366f1', 
+            brandDark: '#4f46e5',
+            surface: '#ffffff',
+            surfaceDark: '#1e293b',
+            bgDark: '#0f172a'
           }
         }
-      } catch (error) {
-        showSyncStatus('error', `❌ Lỗi kết nối: ${error.message}`);
-      } finally {
-        // Re-enable button
-        syncBtn.disabled = false;
-        syncBtnIcon.textContent = '🔄';
-        syncBtnText.textContent = 'Sync Hôm Nay';
       }
-    }
-
-    function showSyncStatus(type, message) {
-      const syncStatusEl = document.getElementById('syncStatus');
-      syncStatusEl.className = `status-message ${type}`;
-      syncStatusEl.textContent = message;
-      syncStatusEl.style.display = 'block';
-      
-      setTimeout(() => {
-        syncStatusEl.style.display = 'none';
-      }, 7000);
-    }
-
-    // ==================== UPLOAD LOGIC (NÂNG CẤP) ====================
-    const selectType = document.getElementById('select-type');
-    const usageGroup = document.getElementById('usage-group');
-    const inputFile = document.getElementById('input-file');
-    const labelFile = document.getElementById('label-file');
-    const inputVersion = document.getElementById('input-version');
-    const labelVersion = document.getElementById('label-version');
-    const inputDeveloper = document.getElementById('input-developer');
-    const labelDeveloper = document.getElementById('label-developer');
-
-    function adjustFormFields() {
-        const type = selectType.value;
-        
-        // Reset fields to default (IPA/Dylib mode)
-        labelFile.textContent = '📥 Link tải file:';
-        usageGroup.style.display = 'none';
-        inputVersion.style.display = 'block';
-        labelVersion.style.display = 'block';
-        inputDeveloper.style.display = 'block';
-        labelDeveloper.style.display = 'block';
-        
-        // Reset Labels/Placeholders
-        labelVersion.textContent = 'Phiên bản:';
-        inputVersion.placeholder = 'VD: 1.0.0...';
-        labelDeveloper.textContent = 'Nhà phát triển:';
-        inputDeveloper.placeholder = 'VD: tuiducios...';
-
-        if (type === 'conf') {
-            labelFile.textContent = '🔗 Link Conf:';
-            usageGroup.style.display = 'block';
-            inputVersion.style.display = 'none';
-            labelVersion.style.display = 'none';
-            inputDeveloper.style.display = 'none';
-            labelDeveloper.style.display = 'none';
-        } else if (type === 'mod') {
-            // Mod: dùng Version/input-version cho Version, Developer/input-developer cho Tag (ví dụ: Gold, Pre)
-            labelVersion.textContent = 'Phiên bản:';
-            inputVersion.placeholder = 'VD: 9.1.0';
-            labelDeveloper.textContent = 'Tag (VD: Gold, Pre):';
-            inputDeveloper.placeholder = 'VD: Gold';
-        } else if (type === 'sign') {
-            // Sign: dùng Version/input-version cho Size, Developer/input-developer cho Date (nếu cần ghi đè)
-            labelVersion.textContent = 'Kích thước/Size:';
-            inputVersion.placeholder = 'VD: 15.5 MB';
-            labelDeveloper.textContent = 'Ngày (tùy chọn):';
-            inputDeveloper.placeholder = 'VD: 2025-11-26 (Để trống nếu lấy ngày hiện tại)';
-        } else if (type === 'cert') {
-            // Cert: dùng Version/input-version cho Check/Status, Developer/input-developer cho Cert Name
-            labelVersion.textContent = 'Trạng thái (Check):';
-            inputVersion.placeholder = 'VD: 🟢 Good';
-            labelDeveloper.textContent = 'Tên Chứng chỉ:';
-            inputDeveloper.placeholder = 'VD: Etisalat - Emirates Telecommunications Corporation';
-        } 
-        
-        // Cần ẩn/hiện nếu các loại file mới có trường trống
-        if (type === 'mod' || type === 'sign' || type === 'cert') {
-             // Ẩn trường Tag nếu là Mod/Sign/Cert (vì dùng badge-select)
-             document.querySelector('.tag-input-group').parentElement.style.display = 'none';
-             document.querySelector('.badge-select').parentElement.style.display = 'block';
-        } else {
-             document.querySelector('.tag-input-group').parentElement.style.display = 'block';
-             document.querySelector('.badge-select').parentElement.style.display = 'block';
-        }
-    }
-
-    selectType.addEventListener('change', adjustFormFields);
-    adjustFormFields();
-
-    window.addEventListener('message', (event) => {
-        if (event.data.type === 'themeChange') {
-            document.body.classList.toggle('dark', event.data.theme === 'dark');
-        }
-    });
-
-    const savedTheme = sessionStorage.getItem('theme');
-    if (savedTheme === 'dark') document.body.classList.add('dark');
-
-    async function uploadApp() {
-      const type = selectType.value;
-      const name = document.getElementById('input-name').value.trim();
-      const icon = document.getElementById('input-icon').value.trim();
-      const desc = document.getElementById('input-desc').value.trim();
-      const fileLink = document.getElementById('input-file').value.trim();
-
-      if (!name || !icon || !desc || !fileLink) {
-        showUploadStatus('error', '⚠️ Vui lòng điền đầy đủ thông tin (Tên, Icon, Mô tả, Link)!');
-        return;
-      }
-
-      // Lấy Tags và Badge (Chỉ dùng nếu không phải Cert/Mod/Sign)
-      const tags = [];
-      document.querySelectorAll('.tag-input-group input[type="checkbox"]:checked').forEach(tag => {
-        tags.push(tag.value);
-      });
-      const badge = document.querySelector('input[name="badge"]:checked').value;
-
-      let appData = {
-          id: `${type}-${Date.now()}`,
-          type: type,
-          name: name,
-          icon: icon,
-          desc: desc,
-          source: 'manual' 
-      };
-      
-      // Fields chung
-      appData.fileLink = fileLink; // Dùng chung cho các loại có link tải
-      const versionInput = document.getElementById('input-version').value.trim();
-      const developerInput = document.getElementById('input-developer').value.trim();
-      const date = new Date().toISOString().split('T')[0];
-
-      if (type === 'conf') {
-          const usage = document.getElementById('input-usage').value.trim();
-          if (!usage) {
-              showUploadStatus('error', '⚠️ Vui lòng điền hướng dẫn sử dụng!');
-              return;
-          }
-          appData.link = fileLink;
-          appData.usage = usage;
-          appData.tags = tags;
-          appData.badge = badge !== 'none' ? badge : null;
-          delete appData.fileLink; 
-
-      } else if (type === 'ipa' || type === 'dylib') {
-          appData.version = versionInput;
-          appData.developer = developerInput;
-          appData.date = date; 
-          appData.tags = tags;
-          appData.badge = badge !== 'none' ? badge : null;
-          
-      } else if (type === 'mod') {
-          // Mod.json fields: id, title (name), description (desc), version (versionInput), downloadUrl (fileLink), date (auto), iconUrl (icon), tag (developerInput)
-          appData.title = name;
-          appData.version = versionInput;
-          appData.downloadUrl = fileLink;
-          appData.date = date;
-          appData.iconUrl = icon;
-          appData.tag = developerInput || null; // Tag (Gold, Pre, Hot)
-          
-          // Loại bỏ các trường không cần thiết cho mod.json
-          delete appData.name;
-          delete appData.desc;
-          delete appData.fileLink;
-          delete appData.developer;
-
-      } else if (type === 'sign') {
-          // Sign.json fields: id, title (name), description (desc), downloadUrl (fileLink), date (developerInput/auto), iconUrl (icon), size (versionInput), tag (badge)
-          appData.title = name;
-          appData.description = desc;
-          appData.downloadUrl = fileLink;
-          appData.date = developerInput || date;
-          appData.iconUrl = icon;
-          appData.size = versionInput;
-          appData.tag = badge !== 'none' ? badge.toUpperCase() : null; // Tag (NEW, HOT)
-          
-          // Loại bỏ các trường không cần thiết cho sign.json
-          delete appData.name;
-          delete appData.desc;
-          delete appData.fileLink;
-          delete appData.developer;
-          
-      } else if (type === 'cert') {
-          // Cert.json fields: id, filename (name), check (versionInput), certname (developerInput), size (desc), downloadUrl (fileLink), iconUrl (icon), tag (badge)
-          appData.filename = name;
-          appData.check = versionInput;
-          appData.certname = developerInput;
-          appData.size = desc; // Dùng desc làm size vì size cert là định dạng file
-          appData.downloadUrl = fileLink;
-          appData.iconUrl = icon;
-          appData.tag = badge !== 'none' ? badge.toUpperCase() : null;
-
-          // Loại bỏ các trường không cần thiết cho cert.json
-          delete appData.name;
-          delete appData.desc;
-          delete appData.fileLink;
-          delete appData.developer;
-      }
-
-
-      try {
-        showUploadStatus('success', '⏳ Đang upload...');
-        
-        const response = await fetch('/api/upload', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ type, data: appData })
-        });
-
-        const result = await response.json();
-        
-        if (response.ok) {
-          showUploadStatus('success', `✅ Upload thành công! Đang chuyển về trang chủ...`);
-          clearForm();
-          
-          setTimeout(() => {
-            if (window.top && window.top.document) {
-              const homeLink = window.top.document.querySelector('.bottom-nav a[href*="home.html"]');
-              if (homeLink) {
-                homeLink.click();
-              }
-            }
-          }, 2000);
-          
-        } else {
-          if (result.code === 'NO_AUTH_COOKIE') {
-            showUploadStatus('error', '❌ Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.');
-            logout();
-          } else {
-            showUploadStatus('error', `❌ Lỗi: ${result.error || 'Không thể upload'}`);
-          }
-        }
-      } catch (error) {
-        showUploadStatus('error', `❌ Lỗi kết nối: ${error.message}`);
-      }
-    }
-
-    function showUploadStatus(type, message) {
-      uploadStatus.className = `status-message ${type}`;
-      uploadStatus.textContent = message;
-      uploadStatus.style.display = 'block';
-      
-      if (type === 'success') {
-        setTimeout(() => {
-          uploadStatus.style.display = 'none';
-        }, 5000);
-      } else if (type === 'error') {
-        setTimeout(() => {
-          uploadStatus.style.display = 'none';
-        }, 7000);
-      }
-    }
-
-    function clearForm() {
-      document.getElementById('input-name').value = '';
-      document.getElementById('input-icon').value = '';
-      document.getElementById('input-file').value = '';
-      document.getElementById('input-desc').value = '';
-      document.getElementById('input-usage').value = '';
-      document.getElementById('input-version').value = '';
-      document.getElementById('input-developer').value = '';
-      document.querySelectorAll('.tag-input-group input').forEach(tag => tag.checked = false);
-      document.getElementById('badge-none').checked = true;
-      adjustFormFields(); // Reset form field placeholders/labels
     }
   </script>
 
+  <style>
+    body { font-size: 0.95rem; }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .dark .glass-effect {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    
+    .input-field {
+      @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand/50 transition-all;
+    }
+    .label-text {
+      @apply block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-bgDark text-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
+
+  <div id="loginOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-100 dark:bg-bgDark p-4">
+    <div class="w-full max-w-md bg-white dark:bg-surfaceDark rounded-3xl shadow-2xl p-8 text-center animate-in fade-in zoom-in duration-300">
+      <div class="w-16 h-16 bg-brand/10 text-brand rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <i data-lucide="lock" class="w-8 h-8"></i>
+      </div>
+      <h1 class="text-2xl font-extrabold mb-2">Admin Access</h1>
+      <p class="text-gray-500 text-sm mb-6">Vui lòng nhập mật khẩu quản trị để tiếp tục</p>
+      
+      <input type="password" id="password" placeholder="Mật khẩu..." class="input-field text-center text-lg mb-4" onkeypress="if(event.key==='Enter') checkPassword()">
+      
+      <button onclick="checkPassword()" class="w-full py-3.5 rounded-xl bg-brand hover:bg-brandDark text-white font-bold shadow-lg shadow-brand/30 transition-all active:scale-95">
+        Đăng Nhập
+      </button>
+      <p id="loginMsg" class="mt-4 text-sm font-medium text-red-500 hidden"></p>
+    </div>
+  </div>
+
+  <div id="dashboard" class="hidden max-w-5xl mx-auto p-4 md:p-8 pb-20">
+    
+    <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+      <div>
+        <h1 class="text-3xl font-black bg-gradient-to-r from-brand to-purple-500 bg-clip-text text-transparent">Dashboard</h1>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Quản lý nội dung ứng dụng & hệ thống</p>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="logout()" class="px-4 py-2 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 font-bold text-sm hover:bg-red-100 transition flex items-center gap-2">
+          <i data-lucide="log-out" class="w-4 h-4"></i> Thoát
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="md:col-span-2 bg-white dark:bg-surfaceDark rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-brand/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+        
+        <div class="flex justify-between items-start mb-4 relative z-10">
+          <div>
+            <h3 class="text-lg font-bold flex items-center gap-2">
+              <i data-lucide="refresh-cw" class="w-5 h-5 text-brand"></i> Auto-Sync IPA
+            </h3>
+            <p class="text-xs text-gray-500 mt-1">Đồng bộ dữ liệu tự động từ AppTesters</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Active
+          </span>
+        </div>
+
+        <div class="flex gap-3 mt-4 relative z-10">
+          <button onclick="syncIPA(false)" id="syncBtn" class="flex-1 py-2.5 rounded-xl bg-brand text-white font-bold text-sm shadow-md hover:bg-brandDark transition flex items-center justify-center gap-2">
+            <i data-lucide="download-cloud" class="w-4 h-4"></i> Sync Hôm Nay
+          </button>
+          <button onclick="syncIPA(true)" id="forceSyncBtn" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 font-bold text-sm hover:bg-gray-200 dark:hover:bg-white/10 transition" title="Force Full Sync">
+            <i data-lucide="database" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <p id="syncStatus" class="mt-3 text-xs text-center font-medium h-4"></p>
+      </div>
+
+      <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl p-6 text-white shadow-lg shadow-indigo-500/20 flex flex-col justify-center">
+        <h3 class="text-lg font-bold mb-1">Upload Mới</h3>
+        <p class="text-indigo-100 text-xs mb-4">Chọn loại nội dung cần đăng tải</p>
+        
+        <div class="grid grid-cols-3 gap-2">
+           <button onclick="setFormType('ipa')" class="type-btn active bg-white/20 hover:bg-white/30 p-2 rounded-lg text-xs font-bold backdrop-blur-sm transition" data-type="ipa">IPA</button>
+           <button onclick="setFormType('cert')" class="type-btn bg-white/10 hover:bg-white/30 p-2 rounded-lg text-xs font-bold backdrop-blur-sm transition" data-type="cert">Cert</button>
+           <button onclick="setFormType('mod')" class="type-btn bg-white/10 hover:bg-white/30 p-2 rounded-lg text-xs font-bold backdrop-blur-sm transition" data-type="mod">Mod</button>
+           <button onclick="setFormType('sign')" class="type-btn bg-white/10 hover:bg-white/30 p-2 rounded-lg text-xs font-bold backdrop-blur-sm transition" data-type="sign">Sign</button>
+           <button onclick="setFormType('dylib')" class="type-btn bg-white/10 hover:bg-white/30 p-2 rounded-lg text-xs font-bold backdrop-blur-sm transition" data-type="dylib">Dylib</button>
+           <button onclick="setFormType('conf')" class="type-btn bg-white/10 hover:bg-white/30 p-2 rounded-lg text-xs font-bold backdrop-blur-sm transition" data-type="conf">Conf</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white dark:bg-surfaceDark rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 dark:border-white/5">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold flex items-center gap-2">
+          <span id="formTitleIcon" class="p-2 rounded-lg bg-brand/10 text-brand"><i data-lucide="upload" class="w-5 h-5"></i></span>
+          <span id="formTitleText">Upload IPA</span>
+        </h2>
+        <input type="hidden" id="currentType" value="ipa">
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-4">
+          <div>
+            <label class="label-text" id="lbl-name">Tên ứng dụng</label>
+            <input type="text" id="inp-name" class="input-field" placeholder="Nhập tên...">
+          </div>
+          
+          <div>
+            <label class="label-text">Link Icon</label>
+            <div class="flex gap-3">
+               <input type="text" id="inp-icon" class="input-field" placeholder="https://..." oninput="updatePreview()">
+               <img id="preview-icon" src="https://placehold.co/100" class="w-12 h-12 rounded-xl bg-gray-100 object-cover border border-gray-200 dark:border-gray-700">
+            </div>
+          </div>
+
+          <div>
+            <label class="label-text" id="lbl-link">Link Tải (Download/File)</label>
+            <input type="text" id="inp-link" class="input-field" placeholder="https://...">
+          </div>
+
+          <div id="field-version-group">
+            <label class="label-text" id="lbl-version">Phiên bản</label>
+            <input type="text" id="inp-version" class="input-field" placeholder="1.0.0">
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div id="field-desc-group">
+            <label class="label-text">Mô tả / Ghi chú</label>
+            <textarea id="inp-desc" rows="3" class="input-field resize-none" placeholder="Nhập mô tả ngắn..."></textarea>
+          </div>
+
+          <div id="field-extra-group">
+             <label class="label-text" id="lbl-extra">Nhà phát triển</label>
+             <input type="text" id="inp-extra" class="input-field" placeholder="Tên dev...">
+          </div>
+
+          <div id="field-tags-group">
+            <label class="label-text">Thẻ (Tags) - Đã cập nhật</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <label class="cursor-pointer select-none"><input type="checkbox" class="peer hidden" name="tags" value="Game"><span class="block text-center px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 peer-checked:bg-brand peer-checked:text-white text-xs font-bold transition">🎮 Game</span></label>
+              <label class="cursor-pointer select-none"><input type="checkbox" class="peer hidden" name="tags" value="Social"><span class="block text-center px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 peer-checked:bg-brand peer-checked:text-white text-xs font-bold transition">💬 Social</span></label>
+              <label class="cursor-pointer select-none"><input type="checkbox" class="peer hidden" name="tags" value="Photo/Video"><span class="block text-center px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 peer-checked:bg-brand peer-checked:text-white text-xs font-bold transition">📸 Photo/Video</span></label>
+              <label class="cursor-pointer select-none"><input type="checkbox" class="peer hidden" name="tags" value="Music"><span class="block text-center px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 peer-checked:bg-brand peer-checked:text-white text-xs font-bold transition">🎵 Music</span></label>
+              <label class="cursor-pointer select-none"><input type="checkbox" class="peer hidden" name="tags" value="Utility"><span class="block text-center px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 peer-checked:bg-brand peer-checked:text-white text-xs font-bold transition">🛠️ Utility</span></label>
+              <label class="cursor-pointer select-none"><input type="checkbox" class="peer hidden" name="tags" value="Productivity"><span class="block text-center px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 peer-checked:bg-brand peer-checked:text-white text-xs font-bold transition">📊 Productivity</span></label>
+            </div>
+          </div>
+
+          <div>
+            <label class="label-text">Nhãn (Badge)</label>
+            <div class="flex flex-wrap gap-2">
+              <label class="cursor-pointer select-none"><input type="radio" class="peer hidden" name="badge" value="" checked><span class="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 peer-checked:border-brand peer-checked:text-brand text-xs font-bold transition">None</span></label>
+              <label class="cursor-pointer select-none"><input type="radio" class="peer hidden" name="badge" value="new"><span class="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-500 peer-checked:bg-blue-500 peer-checked:text-white text-xs font-bold transition">Mới</span></label>
+              <label class="cursor-pointer select-none"><input type="radio" class="peer hidden" name="badge" value="hot"><span class="px-3 py-1.5 rounded-lg bg-orange-500/10 text-orange-500 peer-checked:bg-orange-500 peer-checked:text-white text-xs font-bold transition">Hot</span></label>
+              <label class="cursor-pointer select-none"><input type="radio" class="peer hidden" name="badge" value="vip"><span class="px-3 py-1.5 rounded-lg bg-yellow-500/10 text-yellow-500 peer-checked:bg-yellow-500 peer-checked:text-white text-xs font-bold transition">VIP</span></label>
+              <label class="cursor-pointer select-none"><input type="radio" class="peer hidden" name="badge" value="trending"><span class="px-3 py-1.5 rounded-lg bg-purple-500/10 text-purple-500 peer-checked:bg-purple-500 peer-checked:text-white text-xs font-bold transition">Trending</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-6 border-gray-100 dark:border-white/5">
+
+      <div class="flex justify-end gap-3">
+        <button onclick="resetForm()" class="px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5 transition">Làm mới</button>
+        <button onclick="submitForm()" id="submitBtn" class="px-8 py-3 rounded-xl bg-brand text-white font-bold shadow-lg shadow-brand/30 hover:bg-brandDark hover:scale-[1.02] transition flex items-center gap-2">
+          <i data-lucide="upload-cloud" class="w-5 h-5"></i> Đăng Tải
+        </button>
+      </div>
+      <p id="uploadMsg" class="text-center mt-4 text-sm font-semibold"></p>
+    </div>
+
+  </div>
+
+  <script>
+    // === AUTH ===
+    async function checkAuth() {
+        try {
+            const res = await fetch('/api/auth/verify', { method: 'POST', body: JSON.stringify({}) });
+            if(res.ok) showDashboard();
+        } catch(e) {}
+    }
+    
+    async function checkPassword() {
+        const p = document.getElementById('password').value;
+        const msg = document.getElementById('loginMsg');
+        try {
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({password: p})
+            });
+            const d = await res.json();
+            if(d.success) {
+                showDashboard();
+            } else {
+                msg.textContent = '❌ Mật khẩu không đúng';
+                msg.classList.remove('hidden');
+            }
+        } catch(e) { msg.textContent = '❌ Lỗi kết nối'; msg.classList.remove('hidden'); }
+    }
+
+    function showDashboard() {
+        document.getElementById('loginOverlay').classList.add('hidden');
+        document.getElementById('dashboard').classList.remove('hidden');
+        document.getElementById('dashboard').classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-4');
+    }
+
+    function logout() {
+        document.cookie = "admin_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.reload();
+    }
+
+    // === UI LOGIC ===
+    const CONFIG = {
+        ipa: { title: 'Upload IPA', lblName: 'Tên App', lblExtra: 'Nhà phát triển', hasTags: true },
+        dylib: { title: 'Upload Dylib', lblName: 'Tên Dylib', lblExtra: 'Nhà phát triển', hasTags: true },
+        conf: { title: 'Upload Conf', lblName: 'Tên Cấu hình', lblExtra: 'Tác giả', hasTags: true },
+        sign: { title: 'Đăng Sign Mới', lblName: 'Tên Ứng dụng', lblExtra: 'Ngày cập nhật', lblVer: 'Kích thước (Size)', hasTags: false },
+        cert: { title: 'Đăng Cert Mới', lblName: 'Tên File', lblExtra: 'Tên Chứng Chỉ (CN)', lblVer: 'Trạng thái (Check)', hasTags: false },
+        mod: { title: 'Đăng Mod Hot', lblName: 'Tên Mod', lblExtra: 'Tag (VD: Gold)', lblVer: 'Phiên bản', hasTags: false }
+    };
+
+    function setFormType(type) {
+        document.querySelectorAll('.type-btn').forEach(b => {
+            b.classList.remove('bg-white/20', 'active');
+            b.classList.add('bg-white/10');
+            if(b.dataset.type === type) {
+                b.classList.add('bg-white/20', 'active');
+                b.classList.remove('bg-white/10');
+            }
+        });
+
+        const cfg = CONFIG[type];
+        document.getElementById('currentType').value = type;
+        document.getElementById('formTitleText').textContent = cfg.title;
+        
+        document.getElementById('lbl-name').textContent = cfg.lblName;
+        document.getElementById('lbl-extra').textContent = cfg.lblExtra;
+        
+        // Show/Hide Tags based on type
+        document.getElementById('field-tags-group').style.display = cfg.hasTags ? 'block' : 'none';
+
+        // Adjust Version/Extra fields based on type
+        const lblVer = document.getElementById('lbl-version');
+        const inpVer = document.getElementById('inp-version');
+        const inpExtra = document.getElementById('inp-extra');
+
+        if(type === 'cert') {
+            lblVer.textContent = 'Trạng thái (Check)'; // ex: 🟢 Good
+            inpVer.placeholder = 'VD: 🟢 Good';
+            inpExtra.placeholder = 'VD: China Mobile...';
+        } else if (type === 'sign') {
+            lblVer.textContent = 'Kích thước (Size)';
+            inpVer.placeholder = 'VD: 150 MB';
+            inpExtra.placeholder = 'VD: 2024-12-05 (Để trống lấy ngày hiện tại)';
+        } else if (type === 'mod') {
+            lblVer.textContent = 'Phiên bản';
+            inpVer.placeholder = 'VD: 1.0.5';
+            inpExtra.placeholder = 'VD: Gold / VIP';
+        } else {
+            lblVer.textContent = 'Phiên bản';
+            inpVer.placeholder = 'VD: 1.0.0';
+            inpExtra.placeholder = 'VD: Dev Name';
+        }
+    }
+
+    function updatePreview() {
+        const url = document.getElementById('inp-icon').value;
+        if(url) document.getElementById('preview-icon').src = url;
+    }
+
+    // === SUBMIT LOGIC ===
+    async function submitForm() {
+        const type = document.getElementById('currentType').value;
+        const name = document.getElementById('inp-name').value.trim();
+        const icon = document.getElementById('inp-icon').value.trim();
+        const link = document.getElementById('inp-link').value.trim();
+        const version = document.getElementById('inp-version').value.trim();
+        const desc = document.getElementById('inp-desc').value.trim();
+        const extra = document.getElementById('inp-extra').value.trim(); // Developer / Date / CertName / ModTag
+        
+        // Get Badge
+        const badgeEl = document.querySelector('input[name="badge"]:checked');
+        const badge = badgeEl ? badgeEl.value : null;
+
+        // Get Tags
+        const tags = [];
+        document.querySelectorAll('input[name="tags"]:checked').forEach(c => tags.push(c.value));
+
+        if(!name || !link) {
+            alert('⚠️ Vui lòng nhập ít nhất Tên và Link tải!');
+            return;
+        }
+
+        const btn = document.getElementById('submitBtn');
+        const msg = document.getElementById('uploadMsg');
+        
+        btn.disabled = true;
+        btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Đang xử lý...';
+        lucide.createIcons();
+
+        // Construct Data Object based on Type
+        let appData = {
+            id: `${type}-${Date.now()}`,
+            type: type,
+            date: new Date().toISOString().split('T')[0] // Default date
+        };
+
+        if (['ipa', 'dylib', 'conf'].includes(type)) {
+            appData.name = name;
+            appData.icon = icon;
+            appData.desc = desc;
+            appData.version = version;
+            appData.developer = extra;
+            appData.tags = tags;
+            appData.badge = badge;
+            if (type === 'conf') appData.link = link; 
+            else appData.fileLink = link;
+            if (type === 'conf') appData.usage = desc; // Conf usually uses desc as usage
+        } 
+        else if (type === 'cert') {
+            // Mapping for cert.json
+            appData.filename = name;
+            appData.check = version || '🟢 Good'; // Version input is Check status
+            appData.certname = extra || 'Unknown'; // Extra input is Cert Name
+            appData.size = desc; // Use Description input for file format/size text
+            appData.downloadUrl = link;
+            appData.iconUrl = icon;
+            appData.tag = badge ? badge.toUpperCase() : 'NEW';
+        } 
+        else if (type === 'mod') {
+            // Mapping for mod.json
+            appData.title = name;
+            appData.version = version;
+            appData.description = desc; // Fix: Ensure description is passed
+            appData.downloadUrl = link;
+            appData.iconUrl = icon;
+            appData.tag = extra || badge; // Use extra input for Tag (e.g. Gold)
+        } 
+        else if (type === 'sign') {
+            // Mapping for sign.json
+            appData.title = name;
+            appData.description = desc;
+            appData.size = version; // Version input is Size
+            appData.date = extra || appData.date; // Use extra input for Date override
+            appData.downloadUrl = link;
+            appData.iconUrl = icon;
+            appData.tag = badge ? badge.toUpperCase() : 'NEW';
+        }
+
+        try {
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ type, data: appData })
+            });
+            const result = await res.json();
+
+            if(res.ok) {
+                msg.textContent = '✅ Upload thành công!';
+                msg.className = 'mt-4 text-center text-sm font-bold text-green-500';
+                setTimeout(() => { 
+                    msg.textContent = ''; 
+                    resetForm();
+                }, 2000);
+            } else {
+                if(result.code === 'NO_AUTH_COOKIE') {
+                    msg.textContent = '⚠️ Hết phiên đăng nhập. Vui lòng đăng nhập lại.';
+                    logout();
+                } else {
+                    msg.textContent = '❌ Lỗi: ' + (result.error || 'Unknown');
+                }
+                msg.className = 'mt-4 text-center text-sm font-bold text-red-500';
+            }
+        } catch(e) {
+            msg.textContent = '❌ Lỗi kết nối: ' + e.message;
+            msg.className = 'mt-4 text-center text-sm font-bold text-red-500';
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="upload-cloud" class="w-5 h-5"></i> Đăng Tải';
+            lucide.createIcons();
+        }
+    }
+
+    function resetForm() {
+        document.getElementById('inp-name').value = '';
+        document.getElementById('inp-icon').value = '';
+        document.getElementById('inp-link').value = '';
+        document.getElementById('inp-version').value = '';
+        document.getElementById('inp-desc').value = '';
+        document.getElementById('inp-extra').value = '';
+        document.getElementById('preview-icon').src = 'https://placehold.co/100';
+        
+        document.querySelectorAll('input[name="tags"]').forEach(c => c.checked = false);
+        document.querySelector('input[name="badge"][value=""]').checked = true;
+    }
+
+    // === SYNC LOGIC ===
+    async function syncIPA(force) {
+        const btn = document.getElementById(force ? 'forceSyncBtn' : 'syncBtn');
+        const status = document.getElementById('syncStatus');
+        const originContent = btn.innerHTML;
+        
+        btn.disabled = true;
+        btn.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin"></i>';
+        lucide.createIcons();
+        status.className = 'mt-3 text-xs text-center font-medium h-4 text-gray-500';
+        status.textContent = 'Đang đồng bộ...';
+
+        try {
+            const res = await fetch('/api/sync-ipa', { method: 'POST' });
+            const data = await res.json();
+            
+            if(res.ok) {
+                status.className = 'mt-3 text-xs text-center font-bold h-4 text-green-500';
+                status.textContent = `✅ Thành công! +${data.stats?.new || 0} App mới`;
+            } else {
+                status.className = 'mt-3 text-xs text-center font-bold h-4 text-red-500';
+                status.textContent = '❌ Lỗi: ' + (data.error || 'Unknown');
+            }
+        } catch(e) {
+            status.className = 'mt-3 text-xs text-center font-bold h-4 text-red-500';
+            status.textContent = '❌ Lỗi kết nối';
+        } finally {
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = originContent;
+                lucide.createIcons();
+            }, 1000);
+        }
+    }
+
+    // INIT
+    checkAuth();
+    setFormType('ipa');
+    lucide.createIcons();
+  </script>
 </body>
 </html>

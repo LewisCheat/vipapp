@@ -309,7 +309,7 @@
       display: block;
     }
 
-    /* 🆕 DOWNLOAD BUTTON - CRITICAL */
+    /* 🆕 DOWNLOAD BUTTON */
     .download-direct-btn {
       margin-top: 20px;
       padding: 15px 30px;
@@ -324,7 +324,7 @@
       box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
       text-align: center;
       width: 100%;
-      display: none; /* HIDDEN BY DEFAULT */
+      display: none; 
     }
 
     /* SHOW WHEN ACTIVE */
@@ -444,6 +444,9 @@
     <p style="grid-column: 1 / -1; text-align: center; color: var(--text-light);">Đang tải ứng dụng...</p>
   </div>
 
+  <div class="pagination-container" id="pagination-container">
+    </div>
+
   <div class="download-popup" id="downloadPopup">
     <div class="download-popup-content">
       <button class="close-btn" onclick="closeDownloadPopup()">&times;</button>
@@ -489,13 +492,12 @@
             maxlength="19"
           />
           <button onclick="verifyAndDownload()" id="verifyBtn">
-            Xác Nhận
+            <span class="spinner" style="display: none;"></span> Xác Nhận
           </button>
         </div>
         
         <div class="key-message" id="keyMessage"></div>
         
-        <!-- 🎯 NÚT DOWNLOAD - HIDDEN BY DEFAULT -->
         <button class="download-direct-btn" id="downloadDirectBtn" onclick="handleDirectDownload()">
           <span class="download-icon">⬇️</span>
           Tải Xuống Ngay
@@ -511,8 +513,16 @@
   <script>
     const appList = document.getElementById('app-list');
     const downloadPopup = document.getElementById('downloadPopup');
-    let ipaApps = [];
+    const paginationContainer = document.getElementById('pagination-container');
+    
+    let allIpaApps = [];
+    let displayedApps = [];
+    let currentPage = 1;
+    const itemsPerPage = 50; 
     let currentAppLink = '';
+    let currentFilterTag = 'all';
+
+    // ==================== Caching and Loading Logic ====================
 
     // Helper functions
     function getTagEmoji(tag) {
@@ -529,26 +539,154 @@
       };
       return emojis[badge] || badge;
     }
+    
+    async function fetchFreshData() {
+        try {
+            // Thêm timestamp để đảm bảo tải dữ liệu mới nhất (tránh browser caching)
+            const response = await fetch(`../data/ipa.json?t=${Date.now()}`);
+            if (!response.ok) throw new Error('Failed to fetch data');
+            const data = await response.json();
+            
+            // Lưu data và ETag (hoặc last-modified) vào Session Storage
+            sessionStorage.setItem('ipaData', JSON.stringify(data));
+            sessionStorage.setItem('ipaDataTimestamp', Date.now());
+            
+            return data;
+        } catch (error) {
+            console.error('Error fetching fresh data:', error);
+            // Thử tải từ Session Storage nếu fetch thất bại
+            const cachedData = sessionStorage.getItem('ipaData');
+            if (cachedData) return JSON.parse(cachedData);
+            
+            appList.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: red;">❌ Lỗi tải dữ liệu. Vui lòng thử lại sau.</p>';
+            return [];
+        }
+    }
 
-    async function loadIpaApps() {
-      try {
-        const response = await fetch('../data/ipa.json');
-        ipaApps = await response.json();
-        renderApps(ipaApps);
-      } catch (error) {
-        appList.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: red;">Lỗi khi tải dữ liệu.</p>';
+    async function loadIpaApps(forceReload = false) {
+      const cachedData = sessionStorage.getItem('ipaData');
+      const timestamp = sessionStorage.getItem('ipaDataTimestamp');
+
+      if (cachedData && !forceReload) {
+        // Sử dụng dữ liệu cache
+        allIpaApps = JSON.parse(cachedData);
+        // Kiểm tra xem data có quá cũ không (ví dụ: > 1 giờ)
+        const cacheAgeMs = Date.now() - parseInt(timestamp);
+        const oneHour = 60 * 60 * 1000;
+
+        if (cacheAgeMs > oneHour) {
+            // Dữ liệu cũ, khởi chạy kiểm tra data mới (không block UI)
+            checkAndUpdateCache();
+        }
+      } else {
+        // Lần đầu tải hoặc buộc tải lại
+        allIpaApps = await fetchFreshData();
       }
+      
+      // Khởi tạo hiển thị
+      filterTag(currentFilterTag, false);
+    }
+    
+    // Kiểm tra và cập nhật cache ngầm (non-blocking)
+    async function checkAndUpdateCache() {
+         console.log('Checking for new IPA data...');
+         try {
+             // Dùng HEAD request để lấy ETag/Last-Modified (hoặc chỉ cần fetch lại)
+             const response = await fetch(`../data/ipa.json?t=${Date.now()}`); 
+             if (!response.ok) throw new Error('Failed to fetch for update check');
+             
+             const freshData = await response.json();
+             const cachedCount = allIpaApps.length;
+             const freshCount = freshData.length;
+             
+             if (freshCount > cachedCount) {
+                 console.log(`✨ New data found! ${freshCount} apps vs ${cachedCount} cached.`);
+                 
+                 // Cập nhật cache và toàn bộ list
+                 sessionStorage.setItem('ipaData', JSON.stringify(freshData));
+                 sessionStorage.setItem('ipaDataTimestamp', Date.now());
+                 allIpaApps = freshData;
+                 
+                 // Thông báo và tự động reload trang hiện tại (trong iframe)
+                 const reloadMessage = window.top.document.querySelector('#loginStatus');
+                 if (reloadMessage) {
+                     reloadMessage.className = 'status-message success';
+                     reloadMessage.textContent = '✅ Dữ liệu mới đã được cập nhật! Đang tải lại trang...';
+                     reloadMessage.style.display = 'block';
+                 }
+                 
+                 // Tải lại trang sau 2 giây để áp dụng data mới
+                 setTimeout(() => {
+                     window.location.reload(); 
+                 }, 2000);
+             } else {
+                 console.log('Data is up to date.');
+                 // Cập nhật timestamp để reset bộ đếm tuổi cache
+                 sessionStorage.setItem('ipaDataTimestamp', Date.now());
+             }
+         } catch (error) {
+             console.log('Error during background cache check:', error.message);
+         }
+    }
+
+    // ==================== Rendering and Pagination Logic ====================
+
+    function renderPagination(totalItems) {
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        paginationContainer.innerHTML = '';
+
+        if (totalPages <= 1) return;
+
+        const startPage = Math.max(1, currentPage - 2);
+        const endPage = Math.min(totalPages, currentPage + 2);
+
+        // Nút Previous
+        paginationContainer.innerHTML += `
+            <button class="pagination-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                &laquo; Prev
+            </button>
+        `;
+
+        // Các nút số
+        for (let i = startPage; i <= endPage; i++) {
+            const activeClass = i === currentPage ? 'active' : '';
+            paginationContainer.innerHTML += `
+                <button class="pagination-btn ${activeClass}" onclick="changePage(${i})">${i}</button>
+            `;
+        }
+        
+        // Hiển thị thông tin trang
+        paginationContainer.innerHTML += `
+            <span class="pagination-info">${currentPage}/${totalPages}</span>
+        `;
+
+
+        // Nút Next
+        paginationContainer.innerHTML += `
+            <button class="pagination-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                Next &raquo;
+            </button>
+        `;
+
+         // Cuộn lên đầu list khi chuyển trang
+         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function renderApps(apps) {
       if (!apps.length) {
         appList.innerHTML = '<p style="grid-column: 1 / -1; text-align: center;">Không tìm thấy app nào.</p>';
+        paginationContainer.innerHTML = '';
         return;
       }
       
+      // Cắt mảng để chỉ lấy item của trang hiện tại
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentItems = apps.slice(startIndex, endIndex);
+
       appList.innerHTML = '<h2 style="grid-column: 1 / -1; text-align: center;">Các IPA mới nhất</h2>';
       
-      apps.forEach(app => {
+      currentItems.forEach(app => {
         const tagsHTML = app.tags ? app.tags.map(tag => `<span class="tag-badge">${getTagEmoji(tag)}</span>`).join('') : '';
         const badgeHTML = app.badge ? `<span class="tag-badge badge-${app.badge}">${getBadgeEmoji(app.badge)}</span>` : '';
         
@@ -566,7 +704,39 @@
         `;
         appList.appendChild(card);
       });
+      
+      renderPagination(apps.length);
     }
+
+    function changePage(newPage) {
+        const totalPages = Math.ceil(displayedApps.length / itemsPerPage);
+        if (newPage >= 1 && newPage <= totalPages) {
+            currentPage = newPage;
+            renderApps(displayedApps);
+        }
+    }
+
+    // ==================== Filtering Logic ====================
+
+    function filterTag(tag, resetPage = true) {
+      currentFilterTag = tag;
+      
+      // Xử lý active button
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.filter-btn')).find(btn => btn.textContent.toLowerCase().includes(tag.toLowerCase()));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      if (tag === 'all') {
+        displayedApps = allIpaApps;
+      } else {
+        displayedApps = allIpaApps.filter(app => app.tags && app.tags.includes(tag));
+      }
+      
+      if (resetPage) currentPage = 1;
+      renderApps(displayedApps);
+    }
+    
+    // ==================== Download Popup Logic ====================
 
     function showDownloadPopup(app) {
       document.getElementById('popup-icon').src = app.icon;
@@ -580,18 +750,19 @@
       const downloadBtn = document.getElementById('downloadDirectBtn');
       const keyMessage = document.getElementById('keyMessage');
       const keyInput = document.getElementById('vipKeyInput');
+      const verifyBtn = document.getElementById('verifyBtn');
       
       vipSection.classList.remove('active');
       downloadBtn.classList.remove('show');
       keyMessage.className = 'key-message';
       keyMessage.textContent = '';
       keyInput.value = '';
+      verifyBtn.disabled = false;
+      document.querySelector('#verifyBtn .spinner').style.display = 'none';
+      verifyBtn.childNodes[verifyBtn.childNodes.length - 1].textContent = ' Xác Nhận';
       
       downloadPopup.classList.add('active');
       document.querySelector('.download-popup-content').scrollTop = 0;
-      
-      console.log('🎯 Popup opened for:', app.name);
-      console.log('📦 Download link:', currentAppLink);
     }
 
     function closeDownloadPopup() {
@@ -604,7 +775,7 @@
         return;
       }
       
-      const link4mUrl = `https://link4m.co/st?api=68878290a5a29e141e3df398&url=${encodeURIComponent(currentAppLink)}`;
+      const link4mUrl = `https://link4m.co/st?api=691e7751f7bfff4e4434ecd5&url=${encodeURIComponent(currentAppLink)}`;
       window.open(link4mUrl, '_blank');
       
       setTimeout(() => closeDownloadPopup(), 1000);
@@ -636,15 +807,12 @@
       e.target.value = formatted;
     });
 
-    // 🎯 VERIFY AND SHOW DOWNLOAD BUTTON
     async function verifyAndDownload() {
       const keyInput = document.getElementById('vipKeyInput');
       const verifyBtn = document.getElementById('verifyBtn');
       const keyMessage = document.getElementById('keyMessage');
       const downloadBtn = document.getElementById('downloadDirectBtn');
       const key = keyInput.value.trim();
-
-      console.log('🔑 Verifying key:', key);
 
       if (!key || key.length < 19) {
         keyMessage.className = 'key-message error';
@@ -654,7 +822,8 @@
       }
 
       verifyBtn.disabled = true;
-      verifyBtn.innerHTML = '<span class="spinner"></span> Đang xác thực...';
+      document.querySelector('#verifyBtn .spinner').style.display = 'inline-block';
+      verifyBtn.childNodes[verifyBtn.childNodes.length - 1].textContent = ' Đang xác thực...';
       keyMessage.className = 'key-message';
       keyMessage.textContent = '';
       downloadBtn.classList.remove('show');
@@ -667,7 +836,6 @@
         });
 
         const result = await response.json();
-        console.log('📨 API Response:', result);
 
         if (result.success) {
           keyMessage.className = 'key-message success';
@@ -684,9 +852,6 @@
           }
           
           keyMessage.textContent = successMsg;
-          
-          // 🎯 SHOW DOWNLOAD BUTTON
-          console.log('✅ Showing download button...');
           downloadBtn.classList.add('show');
           
           setTimeout(() => {
@@ -719,22 +884,18 @@
         downloadBtn.classList.remove('show');
       } finally {
         verifyBtn.disabled = false;
-        verifyBtn.textContent = 'Xác Nhận';
+        document.querySelector('#verifyBtn .spinner').style.display = 'none';
+        verifyBtn.childNodes[verifyBtn.childNodes.length - 1].textContent = ' Xác Nhận';
       }
     }
 
-    // 🎯 HANDLE DIRECT DOWNLOAD
     function handleDirectDownload() {
-      console.log('⬇️ Download button clicked!');
-      console.log('📦 Link:', currentAppLink);
-
       if (!currentAppLink) {
         alert('❌ Link tải không khả dụng!');
         return;
       }
 
       window.open(currentAppLink, '_blank');
-      console.log('✅ Opened link in new tab');
 
       const keyMessage = document.getElementById('keyMessage');
       keyMessage.className = 'key-message success';
@@ -743,18 +904,6 @@
       setTimeout(() => {
         closeDownloadPopup();
       }, 2000);
-    }
-
-    function filterTag(tag) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      if (tag === 'all') {
-        renderApps(ipaApps);
-      } else {
-        const filtered = ipaApps.filter(app => app.tags && app.tags.includes(tag));
-        renderApps(filtered);
-      }
     }
 
     downloadPopup.addEventListener('click', (e) => {
@@ -766,24 +915,32 @@
     window.addEventListener('message', (event) => {
       if (event.data.type === 'search') {
         const keyword = event.data.keyword.toLowerCase();
-        const filtered = ipaApps.filter(app =>
-          app.name.toLowerCase().includes(keyword) ||
-          app.desc.toLowerCase().includes(keyword)
+        
+        // 1. Lọc trên toàn bộ dữ liệu (allIpaApps)
+        const searchResults = allIpaApps.filter(app =>
+          (app.name && app.name.toLowerCase().includes(keyword)) ||
+          (app.desc && app.desc.toLowerCase().includes(keyword))
         );
-        renderApps(filtered);
+        
+        // 2. Cập nhật displayedApps với kết quả tìm kiếm
+        displayedApps = searchResults;
+        
+        // 3. Reset trang và render kết quả
+        currentPage = 1;
+        renderApps(displayedApps);
+
       } else if (event.data.type === 'themeChange') {
         document.body.classList.toggle('dark', event.data.theme === 'dark');
       }
     });
 
+    // Tải ứng dụng khi trang load
     loadIpaApps();
 
     const savedTheme = sessionStorage.getItem('theme');
     if (savedTheme === 'dark') {
       document.body.classList.add('dark');
     }
-
-    console.log('🚀 IPA Page loaded successfully!');
 
     function forceZoom() {
     document.body.style.zoom = "0.75";}

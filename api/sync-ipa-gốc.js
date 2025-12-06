@@ -187,8 +187,10 @@ export default async function handler(req, res) {
     });
 
     // 6. 🔄 MERGE: GIỮ TẤT CẢ + THÊM MỚI
+    // Bước 1: Lấy tất cả apps cũ (trừ những cái bị skip vì trùng)
     const allAutoApps = [...existingAutoApps, ...newApps];
     
+    // Bước 2: Loại bỏ duplicates (chỉ xóa những cái trùng hoàn toàn)
     const uniqueApps = [];
     const seenKeys = new Set();
     
@@ -200,21 +202,32 @@ export default async function handler(req, res) {
       }
     });
     
+    // Bước 3: Sort theo date (mới nhất lên đầu)
     uniqueApps.sort((a, b) => {
       const dateA = new Date(a.date || a.lastSync || 0);
       const dateB = new Date(b.date || b.lastSync || 0);
       return dateB - dateA;
     });
 
+    // Manual apps sort
     manualApps.sort((a, b) => {
       const dateA = new Date(a.date || 0);
       const dateB = new Date(b.date || 0);
       return dateB - dateA;
     });
 
+    // Final merge
     const mergedData = [...uniqueApps, ...manualApps, ...otherApps];
 
-    // 7. Upload to GitHub
+    console.log(`📊 Summary:
+  - New apps/versions: ${newApps.length}
+  - Kept old versions: ${keptOldVersions.length}
+  - Skipped (exact duplicates): ${skippedApps.length}
+  - Total auto apps: ${uniqueApps.length}
+  - Manual apps: ${manualApps.length}
+  - TOTAL: ${mergedData.length}`);
+
+    // 7. Upload to GitHub (chỉ khi có thay đổi)
     if (newApps.length > 0) {
       console.log('📤 Uploading...');
       
@@ -279,91 +292,50 @@ export default async function handler(req, res) {
   }
 }
 
-// ==================== HELPER FUNCTIONS (NÂNG CẤP) ====================
+// ==================== HELPER FUNCTIONS ====================
 
 function smartDetectTags(app) {
+  const tags = [];
   const name = (app.name || '').toLowerCase();
   const desc = (app.localizedDescription || '').toLowerCase();
   const bundleID = (app.bundleID || '').toLowerCase();
-  const combined = `${name} ${desc} ${bundleID}`;
-
-  // 1. GAME
-  const gameKeywords = [
-    'game', 'play', 'racing', 'puzzle', 'arcade', 'action', 'rpg', 'strategy', 'simulation', 'simulator', 
-    'adventure', 'survival', 'shooter', 'sport', 'football', 'soccer', 'chess', 'card', 'board', 'arena', 
-    'battle', 'war', 'fight', 'ninja', 'zombie', 'hero', 'clash', 'royal', 'minecraft', 'roblox', 'gta', 
-    'pubg', 'call of duty', 'MergeCooking', 'league'
-  ];
-
-  // 2. SOCIAL
-  const socialKeywords = [
-    'social', 'chat', 'messenger', 'call', 'video call', 'meet', 'dating', 'community', 'network', 
-    'friend', 'connect', 'facebook', 'instagram', 'twitter', 'x', 'tiktok', 'discord', 'telegram', 
-    'whatsapp', 'zalo', 'snapchat', 'tinder', 'threads', 'wechat'
-  ];
-
-  // 3. PHOTO & VIDEO
-  const photoKeywords = [
-    'photo', 'picture', 'image', 'camera', 'selfie', 'edit', 'editor', 'filter', 'collage', 'art', 
-    'design', 'canva', 'photoshop', 'lightroom', 'picsart', 'snap', 'gallery', 'video', 'movie', 
-    'film', 'clip', 'stream', 'youtube', 'netflix', 'cinema', 'watch', 'kodi', 'capcut'
-  ];
-
-  // 4. MUSIC
-  const musicKeywords = [
-    'music', 'song', 'audio', 'sound', 'mp3', 'player', 'spotify', 'soundcloud', 'deezer', 
-    'apple music', 'radio', 'podcast', 'karaoke', 'guitar', 'piano', 'beat', 'dj'
-  ];
-
-  // 5. UTILITY & TOOLS
-  const utilityKeywords = [
-    'utility', 'tool', 'manager', 'browser', 'vpn', 'proxy', 'cleaner', 'boost', 'battery', 
-    'file', 'zip', 'rar', 'keyboard', 'launcher', 'widget', 'calculator', 'converter', 'scanner', 
-    'wifi', 'speed', 'adblock', 'torrent', 'downloader'
-  ];
-
-  // 6. PRODUCTIVITY & OFFICE
-  const productivityKeywords = [
-    'productivity', 'note', 'memo', 'list', 'todo', 'task', 'calendar', 'planner', 'office', 
-    'word', 'excel', 'powerpoint', 'pdf', 'scanner', 'doc', 'sheet', 'mail', 'drive', 'translate', 
-    'education', 'learn', 'study', 'math', 'english'
-  ];
-
+  
+  const gameKeywords = ['game', 'play', 'racing', 'clash', 'craft', 'puzzle', 'arcade'];
+  const photoKeywords = ['photo', 'camera', 'pic', 'image', 'snap', 'filter', 'lightroom'];
+  const musicKeywords = ['music', 'audio', 'sound', 'song', 'spotify', 'piano'];
+  const socialKeywords = ['social', 'chat', 'messenger', 'instagram', 'facebook', 'tiktok'];
+  const utilityKeywords = ['utility', 'tool', 'manager', 'vpn', 'scanner', 'calculator'];
+  const productivityKeywords = ['productivity', 'note', 'todo', 'office', 'pdf', 'document'];
+  
   const allCategories = {
-    'Game': gameKeywords,
-    'Social': socialKeywords,
-    'Photo/Video': photoKeywords,
-    'Music': musicKeywords,
-    'Utility': utilityKeywords,
-    'Productivity': productivityKeywords
+    game: gameKeywords,
+    photo: photoKeywords,
+    music: musicKeywords,
+    social: socialKeywords,
+    utility: utilityKeywords,
+    productivity: productivityKeywords
   };
   
   let scores = {};
   
-  // Tính điểm cho từng category
   for (const [category, keywords] of Object.entries(allCategories)) {
     scores[category] = 0;
     keywords.forEach(keyword => {
-      // Tên app chứa keyword: +3 điểm
       if (name.includes(keyword)) scores[category] += 3;
-      // BundleID chứa keyword: +2 điểm
-      if (bundleID.includes(keyword)) scores[category] += 2;
-      // Mô tả chứa keyword: +1 điểm
       if (desc.includes(keyword)) scores[category] += 1;
+      if (bundleID.includes(keyword)) scores[category] += 2;
     });
   }
   
-  // Lấy ra các category có điểm > 0, sắp xếp giảm dần theo điểm
   const sortedCategories = Object.entries(scores)
     .filter(([_, score]) => score > 0)
     .sort(([_, a], [__, b]) => b - a)
-    .slice(0, 2) // Lấy tối đa 2 tag đúng nhất
+    .slice(0, 2)
     .map(([cat, _]) => cat);
   
-  // Nếu không tìm thấy tag nào, gán ngẫu nhiên (hoặc mặc định)
   if (sortedCategories.length === 0) {
-    // Ưu tiên Utility nếu không rõ
-    return ['Utility'];
+    const commonTags = ['utility', 'productivity', 'photo'];
+    return [commonTags[Math.floor(Math.random() * commonTags.length)]];
   }
   
   return sortedCategories;
@@ -390,16 +362,21 @@ function smartDetectBadge(app) {
   
   const trendingKeywords = [
     'spotify', 'youtube', 'tiktok', 'instagram', 'facebook',
-    'whatsapp', 'telegram', 'netflix', 'minecraft', 'roblox', 'gta'
+    'whatsapp', 'telegram', 'netflix', 'minecraft'
   ];
   
   if (trendingKeywords.some(keyword => name.includes(keyword))) {
     return Math.random() > 0.5 ? 'trending' : 'top';
   }
   
-  const premiumKeywords = ['premium', 'pro', 'plus', 'gold', 'vip', 'unlocked', 'mod'];
-  if (premiumKeywords.some(keyword => desc.includes(keyword) || name.includes(keyword))) {
-    return 'vip';
+  const premiumKeywords = ['premium', 'pro', 'plus', 'gold', 'vip', 'unlocked'];
+  if (premiumKeywords.some(keyword => desc.includes(keyword))) {
+    return 'top';
+  }
+  
+  if (Math.random() < 0.2) {
+    const randomBadges = ['trending', 'top', null, null, null];
+    return randomBadges[Math.floor(Math.random() * randomBadges.length)];
   }
   
   return null;
