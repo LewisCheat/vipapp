@@ -140,19 +140,19 @@
         /* CSS cho nút liên hệ nổi chính */
 .floating-contact {
     position: fixed;
-    bottom: 60px;
-    right: 20px;
+    bottom: 60px;   /* Đảm bảo nút không quá gần dưới cùng của cửa sổ */
+    right: 20px;    /* Căn chỉnh nút vào bên phải màn hình */
     background-color: #fff;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 63px;  /* Tăng kích thước lên 10% */
-    height: 63px; /* Tăng kích thước lên 10% */
+    width: 63px;    /* Nút to hơn 10% */
+    height: 63px;   /* Nút to hơn 10% */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: opacity 0.3s, box-shadow 0.3s;
-    z-index: 10000;
+    z-index: 10000;  /* Đảm bảo nút luôn hiển thị trên cùng */
 }
 
 
@@ -185,19 +185,19 @@
         }
 
         /* CSS cho menu nổi */
-        .floating-menu {
-            position: fixed;
-            bottom: 80px;
-            right: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-            padding: 5px;
-            z-index: 9999;
-            min-width: 220px;
-        }
+.floating-menu {
+    position: fixed;
+    bottom: 140px;  /* Điều chỉnh để menu xuất hiện ngay trên nút icon */
+    right: 20px;    /* Đảm bảo menu căn chỉnh với nút */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 5px;
+    z-index: 9999;  /* Đảm bảo menu hiển thị trên tất cả các phần tử khác */
+    min-width: 220px;
+}
 
         .floating-menu a {
             text-decoration: none;
@@ -254,12 +254,12 @@
         <a href="#lien-he-admin">
             <img src="https://cdn-icons-gif.flaticon.com/8121/8121267.gif" alt="Message Icon"> Nhắn tin hỗ trợ 24/7
         </a>
-        <a href="https://p12.vn">
-            <img src="https://i.imgur.com/axdlvRx.gif" alt="Call Icon"> Kho mod vip
+        <a href="https://tuiducios.xyz">
+            <img src="https://i.imgur.com/axdlvRx.gif" alt="Call Icon"> Liên Hệ Admin
         </a>
-        <a href="https://cuios.shop/goldegg" target="_blank" id="miniGameLink">
-            <img src="https://i.imgur.com/sN02C5S.gif" alt="Dice Icon"> Mini Game
-            <span class="menu-badge" id="menuBadge">1</span>
+        <a href="https://t.me/nguyenduc666" target="_blank" id="miniGameLink">
+            <img src="https://i.imgur.com/sN02C5S.gif" alt="Dice Icon"> Mua Chứng Chỉ Cá Nhân
+
         </a>
     </div>
 
