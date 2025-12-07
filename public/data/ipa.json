@@ -1,5 +1,131 @@
 [
   {
+    "id": "ipa-viral.vision.vids-1.128.1",
+    "type": "ipa",
+    "name": "Vids",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/viral.vision.vids.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Vids_1.128.1_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "1.128.1",
+    "developer": "khomodvip",
+    "date": "2025-12-07",
+    "source": "apptesters",
+    "bundleID": "viral.vision.vids",
+    "lastSync": "2025-12-07T03:00:12.148Z"
+  },
+  {
+    "id": "ipa-com.waterminder.waterminder-7.1.4",
+    "type": "ipa",
+    "name": "WaterMinder",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.waterminder.waterminder.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/WaterMinder_7.1.4_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "7.1.4",
+    "developer": "khomodvip",
+    "date": "2025-12-07",
+    "source": "apptesters",
+    "bundleID": "com.waterminder.waterminder",
+    "lastSync": "2025-12-07T03:00:12.149Z"
+  },
+  {
+    "id": "ipa-org.iggymedia.periodtracker-9.93.2",
+    "type": "ipa",
+    "name": "Flo",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/org.iggymedia.periodtracker.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Flo_9.93.2_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "9.93.2",
+    "developer": "khomodvip",
+    "date": "2025-12-07",
+    "source": "apptesters",
+    "bundleID": "org.iggymedia.periodtracker",
+    "lastSync": "2025-12-07T03:00:12.150Z"
+  },
+  {
+    "id": "ipa-com.bikinstudio.screenx-0.0.14",
+    "type": "ipa",
+    "name": "Retrx",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.bikinstudio.screenx.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Social"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Retrx_0.0.14_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "0.0.14",
+    "developer": "khomodvip",
+    "date": "2025-12-07",
+    "source": "apptesters",
+    "bundleID": "com.bikinstudio.screenx",
+    "lastSync": "2025-12-07T03:00:12.150Z"
+  },
+  {
+    "id": "ipa-com.getupnote.ios-9.14.11",
+    "type": "ipa",
+    "name": "UpNote",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.getupnote.ios.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/UpNote_9.14.11_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "9.14.11",
+    "developer": "khomodvip",
+    "date": "2025-12-07",
+    "source": "apptesters",
+    "bundleID": "com.getupnote.ios",
+    "lastSync": "2025-12-07T03:00:12.150Z"
+  },
+  {
+    "id": "ipa-com.upskew.encode.ios-6.15.0",
+    "type": "ipa",
+    "name": "Encode",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.upskew.encode.ios.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Encode_6.15.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.15.0",
+    "developer": "khomodvip",
+    "date": "2025-12-07",
+    "source": "apptesters",
+    "bundleID": "com.upskew.encode.ios",
+    "lastSync": "2025-12-07T03:00:12.150Z"
+  },
+  {
+    "id": "ipa-com.moodtools.thoughtdiary-5.5.10",
+    "type": "ipa",
+    "name": "Clarity",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.moodtools.thoughtdiary.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Clarity_5.5.10_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "5.5.10",
+    "developer": "khomodvip",
+    "date": "2025-12-07",
+    "source": "apptesters",
+    "bundleID": "com.moodtools.thoughtdiary",
+    "lastSync": "2025-12-07T03:00:12.151Z"
+  },
+  {
     "id": "ipa-com.edjing.edjingdjturntable-8.18.01",
     "type": "ipa",
     "name": "edjingMix",
