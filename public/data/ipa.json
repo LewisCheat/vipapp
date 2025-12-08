@@ -1,5 +1,296 @@
 [
   {
+    "id": "ipa-com.lightricks.Facetune2-3.114",
+    "type": "ipa",
+    "name": "Facetune",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.lightricks.Facetune2.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Facetune_3.114_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "3.114",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.lightricks.Facetune2",
+    "lastSync": "2025-12-08T12:23:32.537Z"
+  },
+  {
+    "id": "ipa-archery.storify-1.253.0",
+    "type": "ipa",
+    "name": "Mojo",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/archery.storify.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Mojo_1.253.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "1.253.0",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "archery.storify",
+    "lastSync": "2025-12-08T12:23:32.537Z"
+  },
+  {
+    "id": "ipa-se.resenatverket.FlightRadar24-Free-10.20.0",
+    "type": "ipa",
+    "name": "Flightradar24",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/se.resenatverket.FlightRadar24-Free.png",
+    "desc": "Injected with Gold",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Flightradar24_10.20.0_Gold_%40thisismanpreets_apptesters.org.ipa",
+    "version": "10.20.0",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "se.resenatverket.FlightRadar24-Free",
+    "lastSync": "2025-12-08T12:23:32.537Z"
+  },
+  {
+    "id": "ipa-com.dr1ven.eraser-2025.49.01",
+    "type": "ipa",
+    "name": "Photoroom",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.dr1ven.eraser.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Photo/Video"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Photoroom_2025.49.01_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2025.49.01",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.dr1ven.eraser",
+    "lastSync": "2025-12-08T12:23:32.538Z"
+  },
+  {
+    "id": "ipa-fontskeyboard.fonts-8.4.46",
+    "type": "ipa",
+    "name": "Fonts",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/fontskeyboard.fonts.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Game",
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Fonts_8.4.46_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "8.4.46",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "fontskeyboard.fonts",
+    "lastSync": "2025-12-08T12:23:32.538Z"
+  },
+  {
+    "id": "ipa-com.readdle.ReaddleDocsIPad-8.17.16",
+    "type": "ipa",
+    "name": "Documents",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.readdle.ReaddleDocsIPad.png",
+    "desc": "Injected with Plus",
+    "tags": [
+      "Productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Documents_8.17.16_Plus_%40thisismanpreets_apptesters.org.ipa",
+    "version": "8.17.16",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.readdle.ReaddleDocsIPad",
+    "lastSync": "2025-12-08T12:23:32.538Z"
+  },
+  {
+    "id": "ipa-com.apalonapps.wlf-4.18.14",
+    "type": "ipa",
+    "name": "Weather",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.apalonapps.wlf.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Weather_4.18.14_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "4.18.14",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.apalonapps.wlf",
+    "lastSync": "2025-12-08T12:23:32.538Z"
+  },
+  {
+    "id": "ipa-com.yazio.ios.YAZIO-12.62.0",
+    "type": "ipa",
+    "name": "Yazio",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.yazio.ios.YAZIO.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Yazio_12.62.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "12.62.0",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.yazio.ios.YAZIO",
+    "lastSync": "2025-12-08T12:23:32.538Z"
+  },
+  {
+    "id": "ipa-com.ulisesolave.Fitia-20.0.2",
+    "type": "ipa",
+    "name": "Fitia",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.ulisesolave.Fitia.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Fitia_20.0.2_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "20.0.2",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.ulisesolave.Fitia",
+    "lastSync": "2025-12-08T12:23:32.538Z"
+  },
+  {
+    "id": "ipa-com.lexwarelabs.goodmorning-6.25.48",
+    "type": "ipa",
+    "name": "SleepCycle",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.lexwarelabs.goodmorning.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Game",
+      "Social"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/SleepCycle_6.25.48_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.25.48",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.lexwarelabs.goodmorning",
+    "lastSync": "2025-12-08T12:23:32.539Z"
+  },
+  {
+    "id": "ipa-com.adobe.premiere.ios-25.11.0",
+    "type": "ipa",
+    "name": "Premiere",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.adobe.premiere.ios.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Premiere_25.11.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "25.11.0",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.adobe.premiere.ios",
+    "lastSync": "2025-12-08T12:23:32.539Z"
+  },
+  {
+    "id": "ipa-com.intsig.CamScannerLite-7.7.5",
+    "type": "ipa",
+    "name": "",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.intsig.CamScannerLite.png",
+    "desc": "Injected with VIP",
+    "tags": [
+      "Utility",
+      "Productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/_7.7.5_VIP_%40thisismanpreets_apptesters.org.ipa",
+    "version": "7.7.5",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.intsig.CamScannerLite",
+    "lastSync": "2025-12-08T12:23:32.539Z"
+  },
+  {
+    "id": "ipa-com.dajiu.stay.pro-2.9.16",
+    "type": "ipa",
+    "name": "Stay",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.dajiu.stay.pro.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Stay_2.9.16_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.9.16",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.dajiu.stay.pro",
+    "lastSync": "2025-12-08T12:23:32.539Z"
+  },
+  {
+    "id": "ipa-com.adobe.premiere.ios-25.10.0",
+    "type": "ipa",
+    "name": "Premiere",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.adobe.premiere.ios.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Premiere_25.10.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "25.10.0",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.adobe.premiere.ios",
+    "lastSync": "2025-12-08T12:23:32.539Z"
+  },
+  {
+    "id": "ipa-com.myfitnesspal.mfp-25.47.1",
+    "type": "ipa",
+    "name": "MyFitnessPal",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.myfitnesspal.mfp.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/MyFitnessPal_25.47.1_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "25.47.1",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.myfitnesspal.mfp",
+    "lastSync": "2025-12-08T12:23:32.539Z"
+  },
+  {
+    "id": "ipa-com.busuu.english.app-29.27.0",
+    "type": "ipa",
+    "name": "Busuu",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.busuu.english.app.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Busuu_29.27.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "29.27.0",
+    "developer": "khomodvip",
+    "date": "2025-12-08",
+    "source": "apptesters",
+    "bundleID": "com.busuu.english.app",
+    "lastSync": "2025-12-08T12:23:32.539Z"
+  },
+  {
     "id": "ipa-viral.vision.vids-1.128.1",
     "type": "ipa",
     "name": "Vids",
