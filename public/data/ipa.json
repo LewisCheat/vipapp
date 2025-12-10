@@ -1,5 +1,442 @@
 [
   {
+    "id": "ipa-com.wikiloc.wikiloc-3.26.0",
+    "type": "ipa",
+    "name": "Wikiloc",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.wikiloc.wikiloc.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Wikiloc_3.26.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "3.26.0",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.wikiloc.wikiloc",
+    "lastSync": "2025-12-10T10:52:33.845Z"
+  },
+  {
+    "id": "ipa-com.calm.calmapp-6.85",
+    "type": "ipa",
+    "name": "Calm",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.calm.calmapp.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Calm_6.85_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "6.85",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.calm.calmapp",
+    "lastSync": "2025-12-10T10:52:33.845Z"
+  },
+  {
+    "id": "ipa-com.sleepmonitor.aio-2.6.11",
+    "type": "ipa",
+    "name": "SleepMonitor",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.sleepmonitor.aio.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/SleepMonitor_2.6.11_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.6.11",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.sleepmonitor.aio",
+    "lastSync": "2025-12-10T10:52:33.846Z"
+  },
+  {
+    "id": "ipa-com.bowery-digital.bend-7.0.6",
+    "type": "ipa",
+    "name": "Bend",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.bowery-digital.bend.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Bend_7.0.6_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "7.0.6",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.bowery-digital.bend",
+    "lastSync": "2025-12-10T10:52:33.846Z"
+  },
+  {
+    "id": "ipa-com.bickster.myFitnessSync-3.2.0",
+    "type": "ipa",
+    "name": "FitbittoAppleHealth",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.bickster.myFitnessSync.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/FitbittoAppleHealth_3.2.0_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "3.2.0",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.bickster.myFitnessSync",
+    "lastSync": "2025-12-10T10:52:33.846Z"
+  },
+  {
+    "id": "ipa-uk.co.snappy-code.snappierIPTV-5.1.3",
+    "type": "ipa",
+    "name": "SnappierIPTV",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/uk.co.snappy-code.snappierIPTV.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Photo/Video"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/SnappierIPTV_5.1.3_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "5.1.3",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "uk.co.snappy-code.snappierIPTV",
+    "lastSync": "2025-12-10T10:52:33.846Z"
+  },
+  {
+    "id": "ipa-es.monkimun.lingokids-25.50.1",
+    "type": "ipa",
+    "name": "Lingokids",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/es.monkimun.lingokids.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Lingokids_25.50.1_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "25.50.1",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "es.monkimun.lingokids",
+    "lastSync": "2025-12-10T10:52:33.846Z"
+  },
+  {
+    "id": "ipa-com.google.ios.youtubemusic-8.49.2",
+    "type": "ipa",
+    "name": "YouTubeMusic",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.google.ios.youtubemusic.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Photo/Video",
+      "Music"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/YouTubeMusic_8.49.2_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "8.49.2",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.google.ios.youtubemusic",
+    "lastSync": "2025-12-10T10:52:33.847Z"
+  },
+  {
+    "id": "ipa-com.wangyuehuan.vrtef-5.3.1",
+    "type": "ipa",
+    "name": "rPlayer",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.wangyuehuan.vrtef.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Game",
+      "Music"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/rPlayer_5.3.1_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "5.3.1",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.wangyuehuan.vrtef",
+    "lastSync": "2025-12-10T10:52:33.847Z"
+  },
+  {
+    "id": "ipa-com.zhiliaoapp.musically-42.9.0",
+    "type": "ipa",
+    "name": "TikTok",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.zhiliaoapp.musically.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Social",
+      "Music"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/TikTok_42.9.0_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "42.9.0",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.zhiliaoapp.musically",
+    "lastSync": "2025-12-10T10:52:33.847Z"
+  },
+  {
+    "id": "ipa-com.kingsoft.office.g.wpsoffice-11.37.20",
+    "type": "ipa",
+    "name": "wpsoffice",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.kingsoft.office.g.wpsoffice.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/wpsoffice_11.37.20_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "11.37.20",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.kingsoft.office.g.wpsoffice",
+    "lastSync": "2025-12-10T10:52:33.847Z"
+  },
+  {
+    "id": "ipa-com.ideation.Stress-2.4.14",
+    "type": "ipa",
+    "name": "StressWatch",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.ideation.Stress.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Photo/Video"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/StressWatch_2.4.14_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.4.14",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.ideation.Stress",
+    "lastSync": "2025-12-10T10:52:33.848Z"
+  },
+  {
+    "id": "ipa-com.mobisystems.OxfordDictionaryOfEnglishFree-15.20",
+    "type": "ipa",
+    "name": "Dictionary",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.mobisystems.OxfordDictionaryOfEnglishFree.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Social",
+      "Productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Dictionary_15.20_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "15.20",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.mobisystems.OxfordDictionaryOfEnglishFree",
+    "lastSync": "2025-12-10T10:52:33.848Z"
+  },
+  {
+    "id": "ipa-PhotoEditor.PhotoCollage.inCollage-2.2.12",
+    "type": "ipa",
+    "name": "InCollage",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/PhotoEditor.PhotoCollage.inCollage.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Photo/Video"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/InCollage_2.2.12_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.2.12",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "PhotoEditor.PhotoCollage.inCollage",
+    "lastSync": "2025-12-10T10:52:33.848Z"
+  },
+  {
+    "id": "ipa-com.locket.Locket-2.24.1",
+    "type": "ipa",
+    "name": "Locket",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.locket.Locket.png",
+    "desc": "Injected with Gold",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Locket_2.24.1_Gold_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.24.1",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.locket.Locket",
+    "lastSync": "2025-12-10T10:52:33.848Z"
+  },
+  {
+    "id": "ipa-com.iPwners.Plonkan-13.14",
+    "type": "ipa",
+    "name": "Buddy",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.iPwners.Plonkan.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Buddy_13.14_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "13.14",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.iPwners.Plonkan",
+    "lastSync": "2025-12-10T10:52:33.848Z"
+  },
+  {
+    "id": "ipa-com.myfitnesspal.mfp-25.49.0",
+    "type": "ipa",
+    "name": "MyFitnessPal",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.myfitnesspal.mfp.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/MyFitnessPal_25.49.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "25.49.0",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.myfitnesspal.mfp",
+    "lastSync": "2025-12-10T10:52:33.848Z"
+  },
+  {
+    "id": "ipa-com.risesci.nyx-0.1.552",
+    "type": "ipa",
+    "name": "RiseSleep",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.risesci.nyx.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Social"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/RiseSleep_0.1.552_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "0.1.552",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.risesci.nyx",
+    "lastSync": "2025-12-10T10:52:33.849Z"
+  },
+  {
+    "id": "ipa-com.mwm.stems-4.02.21",
+    "type": "ipa",
+    "name": "Stemz",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.mwm.stems.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Stemz_4.02.21_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "4.02.21",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.mwm.stems",
+    "lastSync": "2025-12-10T10:52:33.849Z"
+  },
+  {
+    "id": "ipa-com.jakemor.firness-ai-14.8",
+    "type": "ipa",
+    "name": "FitnessAI",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.jakemor.firness-ai.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/FitnessAI_14.8_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "14.8",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.jakemor.firness-ai",
+    "lastSync": "2025-12-10T10:52:33.849Z"
+  },
+  {
+    "id": "ipa-com.castpeer.audioroom.ios-2.9.9",
+    "type": "ipa",
+    "name": "SoundLab",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.castpeer.audioroom.ios.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Music"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/SoundLab_2.9.9_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.9.9",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.castpeer.audioroom.ios",
+    "lastSync": "2025-12-10T10:52:33.849Z"
+  },
+  {
+    "id": "ipa-com.linecorp.Foodie-7.4.6",
+    "type": "ipa",
+    "name": "Foodie",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.linecorp.Foodie.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Foodie_7.4.6_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "7.4.6",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.linecorp.Foodie",
+    "lastSync": "2025-12-10T10:52:33.849Z"
+  },
+  {
+    "id": "ipa-com.duolingo.DuolingoMobile-7.102.0",
+    "type": "ipa",
+    "name": "Duolingo",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.duolingo.DuolingoMobile.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Duolingo_7.102.0_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "7.102.0",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.duolingo.DuolingoMobile",
+    "lastSync": "2025-12-10T10:52:33.849Z"
+  },
+  {
+    "id": "ipa-com.crossforward.WidgetSmith-8.1.1",
+    "type": "ipa",
+    "name": "Widgetsmith",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.crossforward.WidgetSmith.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility",
+      "Game"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/06-12-2025/Widgetsmith_8.1.1_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "8.1.1",
+    "developer": "khomodvip",
+    "date": "2025-12-10",
+    "source": "apptesters",
+    "bundleID": "com.crossforward.WidgetSmith",
+    "lastSync": "2025-12-10T10:52:33.849Z"
+  },
+  {
     "id": "ipa-com.mojang.minecraftpe-1.21.124",
     "type": "ipa",
     "name": "Minecraft",
