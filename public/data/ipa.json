@@ -306,6 +306,115 @@
     "lastSync": "2025-12-12T02:44:23.157Z"
   },
   {
+    "id": "ipa-com.amanotes.magictiles-12.121.004",
+    "type": "ipa",
+    "name": "MagicTiles3",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.amanotes.magictiles.png",
+    "desc": "Injected with VIP",
+    "tags": [
+      "productivity"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/12-12-2025/MagicTiles3_12.121.004_VIP_%40thisismanpreets_apptesters.org.ipa",
+    "version": "12.121.004",
+    "developer": "khomodvip",
+    "date": "2025-12-12",
+    "source": "apptesters",
+    "bundleID": "com.amanotes.magictiles",
+    "lastSync": "2025-12-12T08:22:25.666Z"
+  },
+  {
+    "id": "ipa-com.eup.heyjapan-2.3.0",
+    "type": "ipa",
+    "name": "HeyJapan",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.eup.heyjapan.png",
+    "desc": "Injected with IAP",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/12-12-2025/HeyJapan_2.3.0_IAP_%40thisismanpreets_apptesters.org.ipa",
+    "version": "2.3.0",
+    "developer": "khomodvip",
+    "date": "2025-12-12",
+    "source": "apptesters",
+    "bundleID": "com.eup.heyjapan",
+    "lastSync": "2025-12-12T08:22:25.666Z"
+  },
+  {
+    "id": "ipa-com.iptv.player-9.2.1",
+    "type": "ipa",
+    "name": "IPTVExpert",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.iptv.player.png",
+    "desc": "Injected with Pro",
+    "tags": [
+      "social",
+      "game"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/12-12-2025/IPTVExpert_9.2.1_Pro_%40thisismanpreets_apptesters.org.ipa",
+    "version": "9.2.1",
+    "developer": "khomodvip",
+    "date": "2025-12-12",
+    "source": "apptesters",
+    "bundleID": "com.iptv.player",
+    "lastSync": "2025-12-12T08:22:25.667Z"
+  },
+  {
+    "id": "ipa-com.burbn.instagram-409.1.0",
+    "type": "ipa",
+    "name": "Instagram",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.burbn.instagram.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "social"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/12-12-2025/Instagram_409.1.0_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "409.1.0",
+    "developer": "khomodvip",
+    "date": "2025-12-12",
+    "source": "apptesters",
+    "bundleID": "com.burbn.instagram",
+    "lastSync": "2025-12-12T08:22:25.667Z"
+  },
+  {
+    "id": "ipa-com.iPwners.Plonkan-13.16",
+    "type": "ipa",
+    "name": "Buddy",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.iPwners.Plonkan.png",
+    "desc": "Injected with Premium",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/12-12-2025/Buddy_13.16_Premium_%40thisismanpreets_apptesters.org.ipa",
+    "version": "13.16",
+    "developer": "khomodvip",
+    "date": "2025-12-12",
+    "source": "apptesters",
+    "bundleID": "com.iPwners.Plonkan",
+    "lastSync": "2025-12-12T08:22:25.667Z"
+  },
+  {
+    "id": "ipa-com.abishkking.maleworkout-1.43.0",
+    "type": "ipa",
+    "name": "Homeworkouts",
+    "icon": "https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/com.abishkking.maleworkout.png",
+    "desc": "Injected with Subscription Unlocked",
+    "tags": [
+      "Utility"
+    ],
+    "badge": "new",
+    "fileLink": "https://github.com/apptesters-org/AppTesters_Repo/releases/download/12-12-2025/Homeworkouts_1.43.0_Subscription_Unlocked_%40thisismanpreets_apptesters.org.ipa",
+    "version": "1.43.0",
+    "developer": "khomodvip",
+    "date": "2025-12-12",
+    "source": "apptesters",
+    "bundleID": "com.abishkking.maleworkout",
+    "lastSync": "2025-12-12T08:22:25.667Z"
+  },
+  {
     "id": "ipa-me.imgbase.videoday-3.6.0",
     "type": "ipa",
     "name": "VDIT",
